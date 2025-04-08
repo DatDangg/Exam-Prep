@@ -1,0 +1,37 @@
+input::-ms-reveal,
+input::-ms-clear,
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button,
+input::-webkit-password-toggle-button {
+  display: none !important;
+  pointer-events: none;
+  height: 0;
+  width: 0;
+}
+
+.error {
+    color: red;
+    font-size: 1.5rem;
+}
+
+.showPass {
+    background-image: url('../assets/icons/eye.svg');
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  .showPass.active {
+    background-image: url('../assets/icons/eye-off.svg');
+  }
+
+  .inputWrapper {
+    position: relative;
+  }
+  
