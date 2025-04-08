@@ -26,18 +26,18 @@ function Login() {
         <div className={styles.login}>
             <div className="container mb-5">
                 <div className={`row ${styles.form}`}>
-                    <div className={`col-md-5 ${styles.heading}`}>
+                    <div className={`col-lg-5 col-md-7 ${styles.heading}`}>
                         Đăng nhập hệ thống thi
                     </div>
                     <form
-                        className={`col-md-5 ${styles.input}`}
+                        className={`col-lg-5 col-md-7 ${styles.input}`}
                         onSubmit={handleSubmit(onSubmit)}
                     >
                         <div className={styles.formGroup}>
                             <label>Tài khoản</label>
                             <ValidatedInput
                                 name="username"
-                                placeholder="Email hoặc Username"
+                                placeholder="Email..."
                                 register={register}
                                 trigger={trigger}
                                 error={errors.username}
@@ -48,7 +48,7 @@ function Login() {
                             <label>Mật khẩu</label>
                             <ValidatedInput
                                 name="password"
-                                placeholder="Nhập mật khẩu"
+                                placeholder="Mật khẩu..."
                                 register={register}
                                 trigger={trigger}
                                 error={errors.password}
@@ -59,13 +59,14 @@ function Login() {
                             Đăng nhập
                         </button>
                     </form>
-                    <div className={`col-md-5 ${styles.noti}`}>
+                    <div className={`col-lg-5 col-md-7 ${styles.noti}`}>
                         Nếu bạn chưa có tài khoản, vui lòng
                         <Link to='/register'> đăng ký tại đây, </Link>
                         hoặc
                         <Link to='/'> quay lại trang chủ tại đây.</Link>
                     </div>
                 </div>
+                {/* Light dark toggle 
                 <div className={`${styles.toggleTheme}`}>
                     <div className={`${styles.theme}`}>
                         <svg viewBox="0 0 64 64" stroke="currentColor" strokeWidth="2">
@@ -90,7 +91,7 @@ function Login() {
                         </svg>
                         Dark
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

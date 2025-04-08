@@ -5,13 +5,7 @@ export const schema = yup.object().shape({
   username: yup
     .string()
     .required("Vui lòng nhập email hoặc username")
-    .test("is-valid", "Email hoặc username không hợp lệ", function (value) {
-        const input = String(value || "").trim();
-        const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input);
-        const isUsername = /^[a-zA-Z0-9_]{1,}$/.test(input);
-      
-        return isEmail || isUsername;
-      }),      
+    .email("Email không hợp lệ"),      
   password: yup
     .string()
     .required("Mật khẩu không được để trống")
