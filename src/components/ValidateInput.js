@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styles from "./ValidateInput.module.css";
 
 function ValidatedInput({
@@ -9,7 +9,7 @@ function ValidatedInput({
     error,
     inputClassName = "",
 }) {
-    const touchedRef = useRef(false);
+    const [touched, setTouched] = useState(false);
     const [showPass, setShowPass] = useState(false);
     const [hasPass, setHasPass] = useState(false)
     const field = register(name);
@@ -24,11 +24,11 @@ function ValidatedInput({
                     className={`${inputClassName}`}
                     onChange={(e) => {
                         field.onChange(e);
-                        touchedRef.current = true;
+                        setTouched(true);
                         setHasPass(e.target.value !== "")
                     }}
                     onBlur={async () => {
-                        if (touchedRef) {
+                        if (touched) {
                             await trigger(name);
                         }
                     }}

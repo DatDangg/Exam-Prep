@@ -2,10 +2,13 @@
 import * as yup from "yup";
 
 export const schema = yup.object().shape({
-  username: yup
+  username: yup 
     .string()
-    .required("Vui lòng nhập email hoặc username")
-    .email("Email không hợp lệ"),      
+    .required("Vui lòng nhập họ tên"),
+  email: yup
+    .string()
+    .email("Email không hợp lệ")
+    .required("Vui lòng nhập email"),      
   password: yup
     .string()
     .required("Mật khẩu không được để trống")

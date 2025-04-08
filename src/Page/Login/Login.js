@@ -34,13 +34,13 @@ function Login() {
                         onSubmit={handleSubmit(onSubmit)}
                     >
                         <div className={styles.formGroup}>
-                            <label>Tài khoản</label>
+                            <label>Tài khoản </label>
                             <ValidatedInput
-                                name="username"
-                                placeholder="Email..."
+                                name="email"
+                                placeholder="Nhập email"
                                 register={register}
                                 trigger={trigger}
-                                error={errors.username}
+                                error={errors.email}
                                 inputClassName={styles.formGroupInput}
                             />
                         </div>
@@ -48,7 +48,7 @@ function Login() {
                             <label>Mật khẩu</label>
                             <ValidatedInput
                                 name="password"
-                                placeholder="Mật khẩu..."
+                                placeholder="Nhập mật khẩu"
                                 register={register}
                                 trigger={trigger}
                                 error={errors.password}
