@@ -1,10 +1,16 @@
 import * as yup from "yup";
 
+const isEmailExited = async (email) => {
+  const res = await fetch(`http://localhost:3001/users?email=${email}`)
+  const data = await res.json()
+  return data.length > 0
+}
+
 export const loginSchema = yup.object().shape({
   email: yup
     .string()
     .email("Email không hợp lệ")
-    .required("Vui lòng nhập email"),      
+    .required("Vui lòng nhập email"),
   password: yup
     .string()
     .required("Mật khẩu không được để trống")
@@ -28,13 +34,18 @@ export const loginSchema = yup.object().shape({
 
 
 export const registerSchema = yup.object().shape({
-  username: yup 
+  username: yup
     .string()
     .required("Vui lòng nhập họ tên"),
   email: yup
     .string()
     .email("Email không hợp lệ")
-    .required("Vui lòng nhập email"),      
+    .required("Vui lòng nhập email")
+    .test("is-email", "Email đã tồn tại", async function (value) {
+      if (!value) return false
+      const exited = await isEmailExited(value)
+      return !exited
+    }),
   password: yup
     .string()
     .required("Mật khẩu không được để trống")
