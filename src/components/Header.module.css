@@ -1,16 +1,41 @@
 .header {
     padding: 12px 0;
+    border-bottom: 1px solid #e3ebf6;
+    position: relative;
+}
+
+.headerContent {
+    margin: 0 50px;
 }
 
 a {
     text-decoration: none;
 }
 
+.navbarToggler {
+    display: none;
+}
+
+.navbarToggler span {
+    background-color: #2c7be5;
+    display: block;
+    height: 3px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    opacity: 1;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    width: 24px;
+    transition: all 0.3s ease;
+}
+
+
 .logo {
     display: block;
     margin: auto;
     font-size: 1.7rem;
     height: fit-content;
+    text-transform: uppercase;
 }
 
 .navBar {
@@ -24,6 +49,7 @@ a {
     padding: 10px 8px;
     font-size: 1.5rem;
     line-height: 1;
+    font-weight: 600;
 }
 
 .navBarUser {
@@ -84,4 +110,109 @@ a {
 .headerBtn:hover {
     color: #fff;
     background-color: #2c7be5;
+}
+
+.user {
+    position: relative;
+}
+
+.avatar {
+    background-color: #b1c2d9;
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 50%;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.avatar svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.dropdown {
+    position: absolute;
+    display: none;
+    right: 0;
+    width: 180px;
+    border-radius: 7px;
+    border: 1px solid rgba(230, 223, 216, 1);
+    list-style-type: none;
+    margin: 4px 0 0 0;
+    padding: 10px 0;
+    background-color: #fff;
+}
+
+.dropdownItem {
+    font-size: 1.5rem;
+    padding: 8px 24px;
+}
+
+.dropdownItem:hover{
+    cursor: pointer;
+    color: #2c7be5;
+}
+
+.active {
+    display: block;
+}
+
+@media screen and (width < 992px) {
+    .headerContent {
+        margin: 0;
+    }
+}   
+
+@media screen and (width < 768px) {
+    .header {
+        border: none;
+        background-color: rgba(240, 240, 240, 0.5);
+    }
+
+    .navbarToggler {
+        display: block;
+        margin: auto 0;
+    }
+
+    .toggleList {
+        display: none;
+    }
+
+    .toggleList.active {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(240, 240, 240, 0.5);
+    }
+
+    .toggle {
+        display: flex;
+        padding: 8px 20px;
+    }
+
+    .navbarList {
+        list-style-type: none;
+        padding: 0;       
+    }
+
+    .navListItem {
+        padding: 10px 24px;
+        font-size: 1.5rem;
+        line-height: 1;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .navBar {
+        display: none;
+    }
+
+    .toggleTheme {
+        display: none;
+    }
 }
