@@ -3,12 +3,15 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./Register.module.css";
-import { registerSchema } from "../../components/schema";
-import ValidatedInput from "../../components/ValidateInput";
-import { Link } from "react-router-dom";
+import { registerSchema } from "../../utils/schema";
+import ValidatedInput from "../../components/ValidateInput/ValidateInput";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../../hooks/useAuth";
 
 function Register() {
+    const navigate = useNavigate()
+    const { login } = useAuth()
     const {
         register,
         handleSubmit,
@@ -25,7 +28,11 @@ function Register() {
             email: data.email,
             password: data.password
         })
-        .then(res => console.log(data))
+        .then(res => {
+            alert("Register success")
+            login(data.username);
+            navigate("/")
+        })
         .catch(err => console.log(err))
     };
 

@@ -15,7 +15,7 @@ input::-webkit-password-toggle-button {
 }
 
 .showPass {
-    background-image: url('../assets/icons/eye.svg');
+    background-image: url('../../assets/icons/eye.svg');
     cursor: pointer;
     position: absolute;
     right: 10px;
@@ -28,7 +28,7 @@ input::-webkit-password-toggle-button {
   }
   
   .showPass.active {
-    background-image: url('../assets/icons/eye-off.svg');
+    background-image: url('../../assets/icons/eye-off.svg');
   }
 
   .inputWrapper {
