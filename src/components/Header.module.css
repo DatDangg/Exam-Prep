@@ -1,0 +1,87 @@
+.header {
+    padding: 12px 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.logo {
+    display: block;
+    margin: auto;
+    font-size: 1.7rem;
+    height: fit-content;
+}
+
+.navBar {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+}
+
+.navItem {
+    padding: 10px 8px;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.navBarUser {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.toggleTheme {
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    margin-right: 20px;
+}
+
+.theme {
+    font-size: 1.5rem;
+    padding: 8px 12px;
+    margin-left: 3px;
+    border: 1px solid #EDF2F9;
+    background-color: #EDF2F9;
+    font-weight: 400;
+}
+
+.theme svg{
+    width: 1em;
+    height: 1em;
+}
+
+.theme:hover {
+    cursor: pointer;
+    background-color: rgba(40, 62, 89, .2);
+    border: 1px solid #bec2c7;
+}
+
+.theme:nth-child(1) {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.theme:nth-child(2) {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.headerBtn {
+    padding: 8px 12px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c7be5;
+    height: fit-content;
+    border: 1px solid #2c7be5;
+    border-radius: 5px;
+    background-color: transparent;
+    transition: all .3s ease-in;
+}
+
+.headerBtn:hover {
+    color: #fff;
+    background-color: #2c7be5;
+}

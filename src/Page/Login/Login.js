@@ -1,25 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
+import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import styles from "./Login.module.css";
-import { schema } from "../../components/schema";
+import axios from "axios";
+
+import { loginSchema } from "../../components/schema";
 import ValidatedInput from "../../components/ValidateInput";
-import { Link } from "react-router-dom";
+
+import styles from "./Login.module.css";
 
 function Login() {
+    const navigate = useNavigate()
     const {
         register,
         handleSubmit,
         trigger,
         formState: { errors },
     } = useForm({
-        resolver: yupResolver(schema),
+        resolver: yupResolver(loginSchema),
         mode: "onSubmit",
     });
-
+      
     const onSubmit = (data) => {
-        console.log("Đăng nhập với:", data);
+        axios.get("http://localhost:3001/users")
+            .then(res => {
+                const users = res.data
+                const foundUser = users.find((user) => 
+                    user.email === data.email && user.password === data.password
+                )
+                if (foundUser) {
+                    alert("login success")
+                    navigate("/")
+                }
+                else {
+                    alert("Error")
+                }
+            })
+            .catch(err => console.log(err))
     };
 
     return (
@@ -66,7 +83,7 @@ function Login() {
                         <Link to='/'> quay lại trang chủ tại đây.</Link>
                     </div>
                 </div>
-                {/* Light dark toggle 
+                {/* Light dark toggle  */}
                 <div className={`${styles.toggleTheme}`}>
                     <div className={`${styles.theme}`}>
                         <svg viewBox="0 0 64 64" stroke="currentColor" strokeWidth="2">
@@ -91,7 +108,7 @@ function Login() {
                         </svg>
                         Dark
                     </div>
-                </div> */}
+                </div>
             </div>
         </div>
     );

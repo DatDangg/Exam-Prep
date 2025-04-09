@@ -65,7 +65,7 @@ input::placeholder {
     color: #95AA99;
     text-align: center;
     margin-bottom: 36px;
-    padding: 0 10px;
+    padding: 0 20px;
 }
 
 .noti a {
@@ -96,7 +96,6 @@ input::placeholder {
 .theme svg{
     width: 1em;
     height: 1em;
-    margin-right: 3px;
 }
 
 .theme:hover {

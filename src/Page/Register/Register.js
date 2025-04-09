@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./Register.module.css";
-import { schema } from "../../components/schema";
+import { registerSchema } from "../../components/schema";
 import ValidatedInput from "../../components/ValidateInput";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Register() {
     const {
@@ -14,12 +15,18 @@ function Register() {
         trigger,
         formState: { errors },
     } = useForm({
-        resolver: yupResolver(schema),
+        resolver: yupResolver(registerSchema),
         mode: "onSubmit",
     });
 
     const onSubmit = (data) => {
-        console.log("Đăng nhập với:", data);
+        axios.post("http://localhost:3001/users", {
+            username: data.username,
+            email: data.email,
+            password: data.password
+        })
+        .then(res => console.log(data))
+        .catch(err => console.log(err))
     };
 
     return (
@@ -77,7 +84,7 @@ function Register() {
                         <Link to='/'> quay lại trang chủ tại đây.</Link>
                     </div>
                 </div>
-                {/* Light dark toggle 
+                {/* Light dark toggle  */}
                 <div className={`${styles.toggleTheme}`}>
                     <div className={`${styles.theme}`}>
                         <svg viewBox="0 0 64 64" stroke="currentColor" strokeWidth="2">
@@ -102,7 +109,7 @@ function Register() {
                         </svg>
                         Dark
                     </div>
-                </div> */}
+                </div>
             </div>
         </div>
     );
