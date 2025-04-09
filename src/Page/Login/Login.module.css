@@ -91,11 +91,14 @@ input::placeholder {
     border: 1px solid #EDF2F9;
     background-color: #EDF2F9;
     font-weight: 400;
+    display: flex;
+    align-items: center;
 }
 
 .theme svg{
     width: 1em;
     height: 1em;
+    margin-right: 3px;
 }
 
 .theme:hover {
