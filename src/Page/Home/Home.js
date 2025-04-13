@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
 
 function Home() {
@@ -22,7 +23,7 @@ function Home() {
           <div className="row">
             <div className="col-lg-8 d-flex align-items-center">
               <div>
-                <div className={styles.serviceTitle}>Dịch vụ của chúng tôi</div>
+                <div className={styles.homeItemHeading}>Dịch vụ của chúng tôi</div>
                 <div className={styles.serviceDesc}>
                   Được thiết kế để đem lại tối đa lợi ích cho thí sinh trong quá
                   trình ôn luyện thi, meo meo meo meo meo meo meo meo
@@ -141,7 +142,7 @@ function Home() {
       <div className={styles.homeGoal}>
         <div className="container">
           <div className="row">
-            <div className={styles.goalHeading}>Thành tựu của chúng tôi</div>
+            <div className={styles.homeItemHeading}>Thành tựu của chúng tôi</div>
           </div>
           <div className={`row ${styles.goalRow}`}>
             <div className={`col-xl col-md-6 col-12 ${styles.goalItem}`}>
@@ -197,7 +198,33 @@ function Home() {
                 </div>
               </div>
             </div>
-            
+          </div>
+        </div>
+      </div>
+      <div className={styles.homeGuide}>
+        <div className="container">
+        <div className="row">
+            <div className="col-lg-5">
+              <div>
+                <div className={styles.homeItemHeading}>Phần mềm thi thử mô phỏng 100% phần mềm thi chính thức</div>
+                <div className={styles.guideDesc}>
+                  Phần mềm được phát triển hoạt động trên mọi nền tảng từ laptop đến điện thoại để 
+                  phục vụ nhu cầu ôn luyện, thi thử của các bạn thí sinh trước mỗi kỳ thi. 
+                  Đăng ký thi dễ dàng với quy trình thi như sau:
+                </div>
+                  <ol className={styles.descList}>
+                    <li><Link to='/register'>Đăng ký</Link> tài khoản trực tuyến</li>
+                    <li>Hệ thống tự động cấp tài khoản thi trực tuyến ngay sau khi đăng ký, đồng thời gửi thông tin qua email</li>
+                    <li>Đăng nhập hệ thống</li>
+                    <li>Nhận đề, vào thi</li>
+                    <li>Bấm <strong>Nộp bài</strong> khi làm xong</li>
+                    <li>Nhận ngay điểm thi và kết quả cùng lời giải</li>
+                  </ol>
+              </div>
+            </div>
+            <div className="col-lg-7">
+              <img src="/illustration-3.png" className={styles.serviceImg}></img>
+            </div>
           </div>
         </div>
       </div>

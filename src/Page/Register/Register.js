@@ -5,13 +5,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./Register.module.css";
 import { registerSchema } from "../../utils/schema";
 import ValidatedInput from "../../components/ValidateInput/ValidateInput";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../hooks/useAuth";
 
 function Register() {
     const navigate = useNavigate()
-    const { login } = useAuth()
+    const { login, isAuthenticated } = useAuth()
+
+
     const {
         register,
         handleSubmit,
@@ -21,7 +23,9 @@ function Register() {
         resolver: yupResolver(registerSchema),
         mode: "onSubmit",
     });
-
+    if (isAuthenticated) {
+        return <Navigate to="/" />;
+      }
     const onSubmit = (data) => {
         axios.post("http://localhost:3001/users", {
             username: data.username,
@@ -36,7 +40,9 @@ function Register() {
         .catch(err => console.log(err))
     };
 
+
     return (
+        (!isAuthenticated) &&
         <div className={styles.register}>
             <div className="container mb-5">
                 <div className={`row ${styles.form}`}>

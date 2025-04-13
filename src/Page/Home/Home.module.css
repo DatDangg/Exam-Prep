@@ -44,10 +44,10 @@
 }
 
 .homeService {
-    padding-top: 36px;
+    padding: 36px 0;
 }
 
-.serviceTitle {
+.homeItemHeading {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 18px;
@@ -100,13 +100,7 @@
 }
 
 .homeGoal {
-    padding-top: 40px;
-}
-
-.goalHeading {
-    font-size: 2rem;
-    margin-bottom: 18px;
-    font-weight: 600;
+    padding: 36px 0;
 }
 
 .goalRow {
@@ -142,4 +136,19 @@
 .goalImg {
     width: 26px;
     height: 26px;
+}
+
+.homeGuide {
+    padding: 36px 0;
+}
+
+.guideDesc {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+}
+
+.descList {
+    font-size: 1.5rem;
+    color: #6E84A3;    
+    padding-left: 40px;
 }
