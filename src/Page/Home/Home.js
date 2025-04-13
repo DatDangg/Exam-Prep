@@ -35,7 +35,7 @@ function Home() {
             </div>
           </div>
           <div className={`row ${styles.serviceRow}`}>
-            <div className={`col-md-6 ${styles.serviceWrap}`}>
+            <div className={`col-lg-6 ${styles.serviceWrap}`}>
               <div className={styles.serviceBorder}>
                 <div className={styles.serviceItemHead}>Phần mềm thi thử</div>
                 <div className={styles.serviceItemDesc}>
@@ -85,7 +85,7 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div className={`col-md-6 ${styles.serviceWrap}`}>
+            <div className={`col-lg-6 ${styles.serviceWrap}`}>
               <div className={styles.serviceBorder}>
                 <div className={styles.serviceItemHead}>Luyện đề</div>
                 <div className={styles.serviceItemDesc}>

@@ -1,0 +1,35 @@
+.contact {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.contactList {
+    list-style-type: none;
+}
+
+.contactItem {
+    border-radius: 50%;
+
+    margin: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.contactItem:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.contactLink {
+    background-color: white;
+    padding: 10px;
+    display: block;
+    border-radius: 50%;
+}
+
+.img {
+    height: 14px;
+    width: 14px;
+}
