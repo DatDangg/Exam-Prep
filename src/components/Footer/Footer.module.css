@@ -1,0 +1,58 @@
+.footer {
+    padding-top: 36px;
+    border-top: 1px solid #e3ebf6;
+}
+
+.webName {
+    font-size: 1.7rem;
+    color: #F05404;
+}
+
+.webSlogan {
+    font-size: 1.5rem;
+    color: #6E84A3;
+    margin-bottom: 6px;
+}
+
+.contact {
+    list-style-type: none;
+    font-size: 1.5rem;
+    padding: 0;
+    padding-bottom: 36px;
+}
+
+.contactItem {
+    padding-bottom: 6px;
+}
+
+.contactLink {
+    color: #6E84A3; 
+    
+}
+
+.img {
+    height: 24px;
+    width: 24px;
+    margin: 0 6px 3px 0;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: #2C7BE5;
+    font-weight: 600;
+}
+
+.sectionList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sectionItem {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+}
+
+.sectionLink {
+    color: #6E84A3;
+}
