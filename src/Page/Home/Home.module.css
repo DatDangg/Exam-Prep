@@ -1,5 +1,5 @@
 .home {
-    padding-top: 40px;
+
 }
 
 .homeBanner {
@@ -7,6 +7,7 @@
     background-repeat: no-repeat;
     background-position: 0, 100%;
     background-size: auto 100%;
+    background-color: #fef4ea;
 }
 
 .banner {
@@ -62,6 +63,8 @@
 
 .serviceImg {
     max-width: 100%;
+    display: block;
+    margin: auto;
 }
 
 .serviceRow {
@@ -121,6 +124,8 @@
     padding: 18px 24px;
     border: 1px solid #95AAC9;
     border-radius: 7px;
+    border-color: #edf2f9;;
+    box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03)
 }
 
 .goalTitle {
@@ -155,4 +160,11 @@
     font-size: 1.5rem;
     color: #6E84A3;    
     padding-left: 40px;
+}
+
+@media screen and (width < 992px){
+    .homeBanner {
+        background-image: none;
+    }
+    
 }

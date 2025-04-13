@@ -7,7 +7,7 @@ function Home() {
       <div className={styles.homeBanner}>
         <div className={`container`}>
           <div className={`row ${styles.banner}`}>
-            <div className="col-md-6 d-flex flex-column align-items-center">
+            <div className="col-md-8 col-lg-6 col-10 d-flex flex-column align-items-center">
               <div className={styles.bannerTitle}>Thi thử trực tuyến miễn phí</div>
               <div className={styles.bannerDesc}>
                 Nơi cung cấp đề thi và lời giải chi tiết cùng việc hỗ trợ các câu hỏi khó
@@ -35,7 +35,7 @@ function Home() {
             </div>
           </div>
           <div className={`row ${styles.serviceRow}`}>
-            <div className={`col-lg-6 ${styles.serviceWrap}`}>
+            <div className={`col-md-6 ${styles.serviceWrap}`}>
               <div className={styles.serviceBorder}>
                 <div className={styles.serviceItemHead}>Phần mềm thi thử</div>
                 <div className={styles.serviceItemDesc}>
@@ -85,7 +85,7 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div className={`col-lg-6 ${styles.serviceWrap}`}>
+            <div className={`col-md-6 ${styles.serviceWrap}`}>
               <div className={styles.serviceBorder}>
                 <div className={styles.serviceItemHead}>Luyện đề</div>
                 <div className={styles.serviceItemDesc}>
@@ -145,7 +145,7 @@ function Home() {
             <div className={styles.homeItemHeading}>Thành tựu của chúng tôi</div>
           </div>
           <div className={`row ${styles.goalRow}`}>
-            <div className={`col-xl col-md-6 col-12 ${styles.goalItem}`}>
+            <div className={`col-xl col-lg-6 col-12 ${styles.goalItem}`}>
               <div className={styles.goalWrap}>
                 <div>
                   <div className={styles.goalTitle}> Lượt thi </div>
@@ -161,7 +161,7 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div className={`col-xl col-md-6 col-12 ${styles.goalItem}`}>
+            <div className={`col-xl col-lg-6 col-12 ${styles.goalItem}`}>
               <div className={styles.goalWrap}> 
                 <div>
                   <div className={styles.goalTitle}> Thí sinh </div>
@@ -176,7 +176,7 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div className={`col-xl col-md-6 col-12 ${styles.goalItem}`}>
+            <div className={`col-xl col-lg-6 col-12 ${styles.goalItem}`}>
               <div className={styles.goalWrap}>
                 <div>
                   <div className={styles.goalTitle}> Ngân hàng câu hỏi </div>
@@ -202,7 +202,7 @@ function Home() {
         </div>
       </div>
       <div className={styles.homeGuide}>
-        <div className="container">
+        <div className="container"> 
         <div className="row">
             <div className="col-lg-5">
               <div>
