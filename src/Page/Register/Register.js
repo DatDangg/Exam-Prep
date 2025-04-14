@@ -1,17 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./Register.module.css";
 import { registerSchema } from "../../utils/schema";
 import ValidatedInput from "../../components/ValidateInput/ValidateInput";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useAuth } from "../../hooks/useAuth";
 
 function Register() {
     const navigate = useNavigate()
-    const { login, isAuthenticated } = useAuth()
+    const { register: registerUser, isAuthenticated } = useAuth()
 
     const {
         register,
@@ -25,20 +23,16 @@ function Register() {
     if (isAuthenticated) {
         return <Navigate to="/" />;
     }
-    const onSubmit = (data) => {
-        axios.post("http://localhost:3001/users", {
-            username: data.username,
-            email: data.email,
-            password: data.password
-        })
-        .then(res => {
-            alert("Register success")
-            login(data.username);
-            navigate("/")
-        })
-        .catch(err => console.log(err))
+    const onSubmit = async (data) => {
+        try {
+            await registerUser(data);
+            alert("Đăng ký thành công!");
+            navigate("/");
+        } catch (err) {
+            console.error("Lỗi khi đăng ký:", err);
+            alert("Đăng ký thất bại. Vui lòng thử lại!");
+        }
     };
-
 
     return (
         (!isAuthenticated) &&

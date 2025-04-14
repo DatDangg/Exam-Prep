@@ -1,34 +1,58 @@
 {
   "users": [
     {
-      "id": "eb2e",
+      "id": "EXAM1",
       "username": "dat",
-      "email": "datkiller20112003@gmail.com",
-      "password": "Dat123@"
-    },
-    {
-      "id": "5f38",
-      "username": "dat1",
-      "email": "datkiller20112003@gmail.com",
-      "password": "Dat123@"
-    },
-    {
-      "id": "f2dd",
-      "username": "dat",
-      "email": "datdang20112003@gmail.com",
-      "password": "Dat123@"
-    },
-    {
-      "id": "8f6e",
-      "username": "datddd",
       "email": "dat@gmail.com",
       "password": "Dat2003@"
     },
     {
-      "id": "8e95",
-      "username": "dangdat2003",
-      "email": "sadfsd@gmail.com",
+      "id": "EXAM2",
+      "username": "datdang",
+      "password": "Dat2003@",
+      "phoneNumber": "",
+      "email": "datkiller20112003@gmail.com"
+    },
+    {
+      "id": "EXAM3",
+      "username": "ccc",
+      "email": "datkillerd20112003@gmail.com",
       "password": "Dat2003@"
+    },
+    {
+      "id": "EXAM4",
+      "username": "đá",
+      "email": "datkillferd20112003@gmail.com",
+      "password": "Dat2003@"
+    }
+  ],
+  "userInfor": [
+    {
+      "id": "EXAM1",
+      "accountType": "Miễn phí",
+      "creationDate": "14-04-2025 22:01:05",
+      "examCount": 0
+    },
+    {
+      "id": "EXAM2",
+      "accountType": "Miễn phí",
+      "examCount": 0,
+      "phoneNumber": "",
+      "creationDate": "14-04-2025 23:01:05"
+    },
+    {
+      "id": "EXAM3",
+      "accountType": "Miễn phí",
+      "examCount": 0,
+      "phoneNumber": "",
+      "creationDate": "14-04-2025 23:35:29"
+    },
+    {
+      "id": "EXAM4",
+      "accountType": "Miễn phí",
+      "examCount": 0,
+      "phoneNumber": "1334",
+      "creationDate": "14-04-2025 23:43:21"
     }
   ]
 }

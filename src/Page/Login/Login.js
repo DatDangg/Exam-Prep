@@ -2,7 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import axios from "axios";
 
 import { loginSchema } from "../../utils/schema";
 import ValidatedInput from "../../components/ValidateInput/ValidateInput";
@@ -25,23 +24,14 @@ function Login() {
     if (isAuthenticated) {
         return <Navigate to="/" />;
     }
-    const onSubmit = (data) => {
-        axios.get("http://localhost:3001/users")
-            .then(res => {
-                const users = res.data
-                const foundUser = users.find((user) => 
-                    user.email === data.email && user.password === data.password
-                )
-                if (foundUser) {
-                    alert("login success");
-                    login(foundUser.username);
-                    navigate("/");
-                  }
-                else {
-                    alert("Error")
-                }
-            })
-            .catch(err => console.log(err))
+    const onSubmit = async (data) => {
+        const success = await login(data);
+        if (success) {
+            alert("Đăng nhập thành công!");
+            navigate("/");
+        } else {
+            alert("Email hoặc mật khẩu không đúng!");
+        }
     };
 
     return (

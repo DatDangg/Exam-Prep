@@ -4,9 +4,6 @@
     position: relative;
 }
 
-.headerContent {
-    margin: 0 50px;
-}
 
 a {
     text-decoration: none;
@@ -141,10 +138,10 @@ a {
     width: 180px;
     border-radius: 7px;
     border: 1px solid rgba(230, 223, 216, 1);
-    list-style-type: none;
     margin: 4px 0 0 0;
     padding: 10px 0;
     background-color: #fff;
+    z-index: 100;
 }
 
 .dropdownItem {
@@ -184,6 +181,7 @@ a {
 
     .toggleList {
         display: none;
+        z-index: 99;
     }
 
     .toggleList.active {
