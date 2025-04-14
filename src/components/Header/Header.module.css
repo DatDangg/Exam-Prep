@@ -16,6 +16,10 @@ a {
     display: none;
 }
 
+.btnToggler {
+    cursor: pointer;
+}
+
 .navbarToggler span {
     background-color: #2c7be5;
     display: block;
@@ -28,7 +32,6 @@ a {
     width: 24px;
     transition: all 0.3s ease;
 }
-
 
 .logo {
     display: block;
@@ -201,7 +204,13 @@ a {
 
     .navbarList {
         list-style-type: none;
-        padding: 0;       
+        cursor: pointer;
+        padding: 0;      
+        width: 100%; 
+    }
+
+    .navListItem:hover {
+        color: #2c7be5;
     }
 
     .navListItem {

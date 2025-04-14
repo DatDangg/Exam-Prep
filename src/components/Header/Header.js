@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 
 function Header() {
@@ -14,7 +14,7 @@ function Header() {
         const handleClick = () => {
           const drop = dropRef.current
           drop.classList.toggle(`${styles.active}`)
-          console.log(drop)
+
         };
 
         const toggleClick = () => {
@@ -27,11 +27,12 @@ function Header() {
 
         const btn = btnRef.current
         btn?.addEventListener('click', toggleClick)
+        
         return () => {
           avt?.removeEventListener('click', handleClick)
           btn?.removeEventListener('click', toggleClick)
         }
-      }, [])
+      }, [isAuthenticated])
 
 
     return (
@@ -39,7 +40,7 @@ function Header() {
             <div className="container">
                 <div className={`row ${styles.headerContent}`}>
                     <div className={`col-auto ${styles.navbarToggler}`}>
-                        <div ref={btnRef}>
+                        <div className={styles.btnToggler} ref={btnRef}>
                             <span></span>
                             <span></span>
                             <span></span>
