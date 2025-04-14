@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 
@@ -12,7 +12,7 @@ import styles from "./Login.module.css";
 
 function Login() {
     const navigate = useNavigate()
-    const { login } = useAuth();
+    const { login, isAuthenticated } = useAuth();
     const {
         register,
         handleSubmit,
@@ -22,7 +22,9 @@ function Login() {
         resolver: yupResolver(loginSchema),
         mode: "onSubmit",
     });
-      
+    if (isAuthenticated) {
+        return <Navigate to="/" />;
+    }
     const onSubmit = (data) => {
         axios.get("http://localhost:3001/users")
             .then(res => {

@@ -13,7 +13,6 @@ function Register() {
     const navigate = useNavigate()
     const { login, isAuthenticated } = useAuth()
 
-
     const {
         register,
         handleSubmit,
@@ -25,7 +24,7 @@ function Register() {
     });
     if (isAuthenticated) {
         return <Navigate to="/" />;
-      }
+    }
     const onSubmit = (data) => {
         axios.post("http://localhost:3001/users", {
             username: data.username,

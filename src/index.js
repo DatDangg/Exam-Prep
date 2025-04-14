@@ -8,9 +8,12 @@ import reportWebVitals from './reportWebVitals';
 
 import Login from './Page/Login/Login';
 import Register from './Page/Register/Register';
-import MainLayout from './layouts/MainLayout';
+import MainLayout from './layouts/MainLayout/MainLayout';
+import InforLayout from './layouts/InforLayout/InforLayout';
 import Home from './Page/Home/Home';
 import { AuthProvider } from './contexts/AuthContext'
+import Infor from './Page/Infor/Infor';
+import ExamHistory from './Page/ExamHistory/ExamHistory';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,6 +27,11 @@ root.render(
 
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
+          </Route>
+
+          <Route path="/user" element={<InforLayout />}>
+            <Route path="infor" element={<Infor />} />
+            <Route path="history" element={<ExamHistory />} />
           </Route>
         </Routes>
       </BrowserRouter>

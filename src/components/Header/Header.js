@@ -75,9 +75,9 @@ function Header() {
                             </ul>
                         </div>
                     </div>
-                    <a href="/" className={`col-auto order-md-first ${styles.logo}`}>
+                    <Link to="/" className={`col-auto order-md-first ${styles.logo}`}>
                         Exam Test Prepare
-                    </a>
+                    </Link>
                     <ul className={`col order-md-0 justify-content-center ${styles.navBar}`}>
                         <li className={`${styles.navItem}`}>Thi thử</li>
                         <li className={`${styles.navItem}`}>Luyện đề</li>
@@ -126,8 +126,16 @@ function Header() {
                                     </svg>
                                 </div>
                                 <ul className={styles.dropdown} ref={dropRef}>
-                                    <li className={styles.dropdownItem}>Thông tin chung</li>
-                                    <li className={styles.dropdownItem}>Lịch sử thi</li>
+                                    <li className={styles.dropdownItem}>        
+                                        <Link to='/user/infor' className={styles.dropdownLink}>     
+                                                Thông tin chung
+                                        </Link>
+                                    </li>
+                                    <li className={styles.dropdownItem}>
+                                        <Link to='/user/history' className={styles.dropdownLink}> 
+                                            Lịch sử thi
+                                        </Link>
+                                    </li>
                                     {/* <li className={styles.dropdownItem}>Tai Khoan</li> */}
                                     <li 
                                         className={styles.dropdownItem}

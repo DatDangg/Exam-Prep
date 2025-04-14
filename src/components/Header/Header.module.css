@@ -149,6 +149,10 @@ a {
     padding: 8px 24px;
 }
 
+.dropdownLink {
+    color: black;
+}
+
 .dropdownItem:hover{
     cursor: pointer;
     color: #2c7be5;
