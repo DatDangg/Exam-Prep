@@ -2,19 +2,27 @@ import { useEffect, useState } from "react";
 import styles from "./ExamHistory.module.css";
 import axios from "axios";
 import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from 'react-router-dom'
+
 
 function ExamHistory() {
     const [exams, setExams] = useState([])
-    const { user } = useAuth() 
+    const { user, isAuthenticated } = useAuth() 
+    const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/api/users/completed/${user.userId}`)
-        .then(res => {
-            setExams(res.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+        if (!isAuthenticated) {
+            navigate("/login");
+        }
+        else {
+            axios.get(`http://localhost:8080/api/users/completed/${user.userId}`)
+            .then(res => {
+                setExams(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
     },[])
   return (
     <div className={styles.exam}>
