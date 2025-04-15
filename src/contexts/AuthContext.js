@@ -4,13 +4,13 @@ import axios from "axios";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [userId, setUserID] = useState(null);
+    const [user, setUser] = useState(null);
     const [isLoadingUser, setIsLoadingUser] = useState(true);
 
     useEffect(() => {
         const savedUser = localStorage.getItem("user");
         if (savedUser) {
-            setUserID(JSON.parse(savedUser));
+            setUser(JSON.parse(savedUser));
         }
         setIsLoadingUser(false);
     }, []);
@@ -28,8 +28,9 @@ export const AuthProvider = ({ children }) => {
             );
 
             if (res.data) {
-                setUserID(res.data.userId);
-                localStorage.setItem("user", JSON.stringify(res.data.userId));
+                const data = {userId: res.data.userId, role: res.data.role} 
+                setUser(data);
+                localStorage.setItem("user", JSON.stringify(data));
                 return true;
             } else {
                 return false;
@@ -41,7 +42,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const logout = () => {
-        setUserID(null);
+        setUser(null);
         localStorage.removeItem("user");
     };
 
@@ -62,8 +63,8 @@ export const AuthProvider = ({ children }) => {
     return (
         <AuthContext.Provider
             value={{
-                userId,
-                isAuthenticated: !!userId,
+                user,
+                isAuthenticated: !!user,
                 isLoadingUser,
                 login,
                 logout,

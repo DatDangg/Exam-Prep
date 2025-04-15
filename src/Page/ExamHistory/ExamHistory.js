@@ -5,10 +5,10 @@ import { useAuth } from "../../hooks/useAuth";
 
 function ExamHistory() {
     const [exams, setExams] = useState([])
-    const { userId } = useAuth() 
+    const { user } = useAuth() 
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/api/users/completed/${userId}`)
+        axios.get(`http://localhost:8080/api/users/completed/${user.userId}`)
         .then(res => {
             setExams(res.data)
         })
