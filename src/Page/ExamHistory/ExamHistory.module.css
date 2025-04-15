@@ -1,0 +1,29 @@
+.exam {
+    /* border: 1px solid #c6ced9; */
+    box-shadow: 0 1rem 1.5rem rgba(18, 38, 63, 0.1);
+    margin: 0 30px;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.examHead {
+    /* background-color: ; */
+}
+
+.examHeadItem {
+    padding: 16px;
+    font-size: 1.8rem;
+    text-align: center;
+    color: #95AAC9;
+    /* border: 1px solid #c6ced9; */
+}
+
+.examBody:nth-child(odd) {
+    background-color: rgba(0, 0, 0, .08);
+}
+
+.examBodyItem {
+    padding: 16px;
+    font-size: 1.6rem;
+    text-align: center;
+}

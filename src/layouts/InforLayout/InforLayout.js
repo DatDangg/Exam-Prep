@@ -48,7 +48,7 @@ function InforLayout() {
                       : styles.navbarLink
                   }
                 >
-                  Lịch sử hoạt động
+                  Lịch sử thi
                 </NavLink>
               </li>
             </ul>

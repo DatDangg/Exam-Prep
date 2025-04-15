@@ -4,101 +4,70 @@ import axios from "axios";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [userId, setUserID] = useState(null);
     const [isLoadingUser, setIsLoadingUser] = useState(true);
 
     useEffect(() => {
         const savedUser = localStorage.getItem("user");
         if (savedUser) {
-          setUser(JSON.parse(savedUser));
+            setUserID(JSON.parse(savedUser));
         }
         setIsLoadingUser(false);
-      }, []);
-
-    const generateUserId = async () => {
-        try {
-            const res = await axios.get("http://localhost:3001/users");
-            const users = res.data;
-
-            const maxId = users.reduce((max, u) => {
-                const match = u.id?.match(/^EXAM(\d+)$/);
-                const num = match ? parseInt(match[1]) : 0;
-                return Math.max(max, num);
-            }, 0);
-
-            return `EXAM${maxId + 1}`;
-        } catch (err) {
-            console.error("Lỗi khi tạo ID:", err);
-            return `EXAM1`; 
-        }
-    };
+    }, []);
 
     const login = async ({ email, password }) => {
         try {
-            const res = await axios.get("http://localhost:3001/users");
-            const users = res.data;
-            const foundUser = users.find(
-                (user) => user.email === email && user.password === password
+            const res = await axios.post(
+                "http://localhost:8080/api/users/login",
+                { email: email, password: password },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
             );
-    
-            if (foundUser) {
-                setUser(foundUser);
-                localStorage.setItem("user", JSON.stringify(foundUser));
-                return true; 
+
+            if (res.data) {
+                setUserID(res.data.userId);
+                localStorage.setItem("user", JSON.stringify(res.data.userId));
+                return true;
             } else {
-                return false; 
+                return false;
             }
         } catch (err) {
             console.error("Lỗi khi đăng nhập:", err);
             return false;
         }
     };
-    
+
     const logout = () => {
-        setUser(null);
+        setUserID(null);
         localStorage.removeItem("user");
     };
 
     const register = async (data) => {
-        const newId = await generateUserId();
-    
-        const newUser = {
-            id: newId,
-            ...data
-        };
-    
         try {
-            await axios.post("http://localhost:3001/users", newUser);
-            const now = new Date();
-            const creationDate = `${String(now.getDate()).padStart(2, '0')}-${String(now.getMonth() + 1).padStart(2, '0')}-${now.getFullYear()} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-
-            const newUserInfor = {
-                id: newId,
-                accountType: "Miễn phí",
-                examCount: 0,
-                phoneNumber: '',
-                creationDate: creationDate
-            };
-    
-            await axios.post("http://localhost:3001/userInfor", newUserInfor);
-    
+            console.log(data);
+            await axios.post("http://localhost:8080/api/users/register", data, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
             login({ email: data.email, password: data.password });
-    
         } catch (err) {
             console.error("Lỗi khi đăng ký:", err);
         }
     };
-    
 
     return (
         <AuthContext.Provider
             value={{
-                user,
-                isAuthenticated: !!user,
+                userId,
+                isAuthenticated: !!userId,
                 isLoadingUser,
                 login,
                 logout,
-                register, 
+                register,
             }}
         >
             {children}
