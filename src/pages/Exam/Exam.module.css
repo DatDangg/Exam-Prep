@@ -4,7 +4,7 @@
 
 .toolBar {
     margin-bottom: 36px;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .input {
@@ -82,4 +82,19 @@
     cursor: pointer;
     text-align: left;
     padding-left: 12px;
+}
+
+@media screen and (width < 768px) {
+    .input {
+        width: 100%;
+        margin-bottom: 24px;
+    }
+
+    .sortList {
+        margin-bottom: 24px;
+    }
+
+    .addBtn {
+        width: 200px;
+    }
 }

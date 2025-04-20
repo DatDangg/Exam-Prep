@@ -81,7 +81,7 @@ function Exam() {
         <div className={styles.exam}>
             <div className="container">
                 <div className={`row ${styles.toolBar}`}>
-                    <div className="col-md-4">
+                    <div className="col-12 col-md-4">
                         <input
                             className={styles.input}
                             value={text}
@@ -89,7 +89,7 @@ function Exam() {
                             placeholder="Tìm kiếm đề"
                         />
                     </div>
-                    <div className="col-md-5">
+                    <div className="col-12 col-md-5">
                         <div className={styles.sort}>Sắp xếp theo:</div>
                         <div className={styles.sortList}>
                             <button className={styles.sortBtn} onClick={() => handleSort('examName')}>
@@ -103,7 +103,7 @@ function Exam() {
                             </button>
                         </div>
                     </div>
-                    <div className="col-md-3 d-flex justify-content-end">
+                    <div className="col-12 col-md-3 d-flex justify-content-center justify-content-md-end">
                         <Link to="/exam/new_exam">
                             <button className={styles.addBtn}>
                                 Thêm đề mới
