@@ -71,11 +71,35 @@ function Header() {
                   </svg>
                 </div>
               </div>
-              <ul className={`${styles.navbarList}`}>
-                <li className={`${styles.navListItem}`}>Thi thử</li>
-                <li className={`${styles.navListItem}`}>Luyện đề</li>
-                <li className={`${styles.navListItem}`}>Bài viết</li>
-              </ul>
+              {user?.role === 'student' ?
+            <ul
+              className={`col order-md-0 justify-content-center ${styles.navbarList}`}
+            >
+              <li className={`${styles.navListItem}`}>
+                <Link to="#" className={styles.Link}>Thi thử</Link>
+              </li>
+              <li className={`${styles.navListItem}`}>
+                <Link to="#" className={styles.Link}>Luyện để</Link>
+              </li>
+              <li className={`${styles.navListItem}`}>
+                <Link to="#" className={styles.Link}>Bài viết</Link>
+              </li>
+            </ul>
+            :
+            <ul
+              className={`col order-md-0 justify-content-center ${styles.navbarList}`}
+            >
+              <li className={`${styles.navListItem}`}>
+                <Link to="#" className={styles.Link}>Thi thử</Link>
+              </li>
+              <li className={`${styles.navListItem}`}>
+                <Link to="#" className={styles.Link}>Luyện để</Link>
+              </li>
+              <li className={`${styles.navListItem}`}>
+                <Link to="/exam" className={styles.Link}> Danh sách đề</Link>
+              </li>
+            </ul>
+          } 
             </div>
           </div>
           <Link to="/" className={`col-auto order-md-first ${styles.logo}`}>
@@ -86,17 +110,29 @@ function Header() {
             <ul
               className={`col order-md-0 justify-content-center ${styles.navBar}`}
             >
-              <li className={`${styles.navItem}`}>Thi thử</li>
-              <li className={`${styles.navItem}`}>Luyện đề</li>
-              <li className={`${styles.navItem}`}>Bài viết</li>
+              <li className={`${styles.navItem}`}>
+                <Link to="#" className={styles.Link}>Thi thử</Link>
+              </li>
+              <li className={`${styles.navItem}`}>
+                <Link to="#" className={styles.Link}>Luyện đề</Link>
+              </li>
+              <li className={`${styles.navItem}`}>
+                <Link to="#" className={styles.Link}>Bài viết</Link>
+              </li>
             </ul>
             :
             <ul
               className={`col order-md-0 justify-content-center ${styles.navBar}`}
             >
-              <li className={`${styles.navItem}`}>Thi thử</li>
-              <li className={`${styles.navItem}`}>Luyện đề</li>
-              <Link to="/exam" className={`${styles.navItem}`}>Thêm đề</Link>
+              <li className={`${styles.navItem}`}>
+                <Link to="#" className={styles.Link}>Thi thử</Link>
+              </li>
+              <li className={`${styles.navItem}`}>
+                <Link to="#" className={styles.Link}>Luyện đề</Link>
+              </li>
+              <li className={`${styles.navItem}`}>
+                <Link to="/exam" className={styles.Link}>Danh sách đề</Link>
+              </li>
             </ul>
           } 
 

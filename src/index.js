@@ -21,6 +21,22 @@ import Exam from "./pages/Exam/Exam";
 import CreateExam from "./pages/CreateExam/CreateExam";
 import ExamLayout from "./layouts/ExamLayout/ExamLayout";
 import NewExam from "./pages/Exam/NewExam";
+import ExamDetails from "./pages/ExamDetails/ExamDetails";
+import { useAuth } from "./hooks/useAuth"; 
+import { Navigate } from "react-router-dom";
+
+const RequireAdmin = ({ children }) => {
+  const { user, isLoadingUser } = useAuth();
+
+  if (isLoadingUser) {
+    return <div>Đang tải dữ liệu người dùng...</div>;
+  }
+
+  if (!user) return <Navigate to="/login" replace />;
+  if (user.role !== "admin") return <Navigate to="/" replace />;
+
+  return children;
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -39,12 +55,12 @@ root.render(
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          <Route element={<ExamLayout />}> 
+          <Route element={<RequireAdmin><ExamLayout /></RequireAdmin>}>
             <Route path="/exam" element={<Exam />} />
             <Route path="/exam/new_exam" element={<NewExam />} />
+            <Route path="/exam/details" element={<ExamDetails />} />
           </Route>
           <Route path="/exam/create" element={<CreateExam />} />
-          
 
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />

@@ -18,7 +18,9 @@ function NewExam() {
             }
         )
         .then(res => {
-            navigate("/exam/create")
+            navigate("/exam/details", {
+                state: { examName: title }
+              });
         })
         .catch(err => console.error(err));
     }
