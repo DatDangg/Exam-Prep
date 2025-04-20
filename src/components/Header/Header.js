@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useAuth } from "../../hooks/useAuth";
 
 function Header() {
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
   const dropRef = useRef();
   const avtRef = useRef();
   const btnRef = useRef();
@@ -81,13 +81,27 @@ function Header() {
           <Link to="/" className={`col-auto order-md-first ${styles.logo}`}>
             Exam Test Prepare
           </Link>
-          <ul
-            className={`col order-md-0 justify-content-center ${styles.navBar}`}
-          >
-            <li className={`${styles.navItem}`}>Thi thử</li>
-            <li className={`${styles.navItem}`}>Luyện đề</li>
-            <li className={`${styles.navItem}`}>Bài viết</li>
-          </ul>
+          
+          {user?.role === 'student' ?
+            <ul
+              className={`col order-md-0 justify-content-center ${styles.navBar}`}
+            >
+              <li className={`${styles.navItem}`}>Thi thử</li>
+              <li className={`${styles.navItem}`}>Luyện đề</li>
+              <li className={`${styles.navItem}`}>Bài viết</li>
+            </ul>
+            :
+            <ul
+              className={`col order-md-0 justify-content-center ${styles.navBar}`}
+            >
+              <li className={`${styles.navItem}`}>Thi thử</li>
+              <li className={`${styles.navItem}`}>Luyện đề</li>
+              <Link to="/exam" className={`${styles.navItem}`}>Thêm đề</Link>
+            </ul>
+          } 
+
+
+
           <div className={`col-auto order-md-1 ${styles.navBarUser}`}>
             <div className={`${styles.toggleTheme}`}>
               <div className={`${styles.theme}`}>

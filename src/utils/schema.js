@@ -1,10 +1,12 @@
+import axios from "axios";
 import * as yup from "yup";
 
 const isEmailExited = async (email) => {
-  const res = await fetch(`http://localhost:3001/users?email=${email}`)
-  const data = await res.json()
-  return data.length > 0
-}
+  const res = await axios.get(`http://localhost:8080/api/users/check-email`, {
+    params: { email }
+  });
+  return res.data.exists; // true nếu đã tồn tại
+};
 
 export const loginSchema = yup.object().shape({
   email: yup

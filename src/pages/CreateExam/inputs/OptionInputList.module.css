@@ -1,0 +1,56 @@
+.options {
+    margin-top: 30px;
+}
+
+.label {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.answerChoice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.select {
+    padding: 4px 6px;
+    font-size: 1.5rem;
+}
+
+.labelName {
+    width: 20px;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.input{
+    flex: 1;
+    height: 36px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1.4rem;
+}
+
+.preview {
+    flex: 2;
+    padding: 8px 12px;
+    min-height: 36px;
+    background-color: #f9f9f9;
+    font-size: 1.6rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.part2 {
+    width: 100%;
+    margin-top: 4px;
+    padding: 6px 10px;
+    font-size: 1.4rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}

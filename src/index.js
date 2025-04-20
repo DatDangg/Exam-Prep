@@ -9,14 +9,16 @@ import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
-import Login from "./Page/Login/Login";
-import Register from "./Page/Register/Register";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 import MainLayout from "./layouts/MainLayout/MainLayout";
 import InforLayout from "./layouts/InforLayout/InforLayout";
-import Home from "./Page/Home/Home";
+import Home from "./pages/Home/Home";
 import { AuthProvider } from "./contexts/AuthContext";
-import Infor from "./Page/Infor/Infor";
-import ExamHistory from "./Page/ExamHistory/ExamHistory";
+import Infor from "./pages/Infor/Infor";
+import ExamHistory from "./pages/ExamHistory/ExamHistory";
+import Exam from "./pages/Exam/Exam";
+import CreateExam from "./pages/CreateExam/CreateExam";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -34,6 +36,8 @@ root.render(
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/exam" element={<Exam />} />
+          <Route path="/create_exam" element={<CreateExam />} />
 
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
@@ -46,6 +50,7 @@ root.render(
         </Routes>
       </BrowserRouter>
     </AuthProvider>
+    
   </React.StrictMode>
 );
 

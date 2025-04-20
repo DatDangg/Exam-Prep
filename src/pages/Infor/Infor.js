@@ -77,7 +77,7 @@ function Infor() {
                         </div>
                         <div className={styles.wrapper}>
                             <label className={styles.label}>Số điện thoại</label>
-                            <input onChange={(e) => handleChange('phoneNumber',e.target.value)} value={formState.phoneNumber} className={styles.input}></input>
+                            <input onChange={(e) => handleChange('phoneNumber', e.target.value)} value={formState.phoneNumber || ""} className={styles.input}></input>
                         </div>
                         <button onClick={() => changeInfor()} className={styles.btn}>
                             <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="transparent">

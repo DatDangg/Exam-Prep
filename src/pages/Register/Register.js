@@ -25,6 +25,7 @@ function Register() {
     }
     const onSubmit = async (data) => {
         try {
+            console.log(data)
             await registerUser(data);
             alert("Đăng ký thành công!");
             navigate("/");
