@@ -1,10 +1,8 @@
-import Header from "../../components/Header/Header"
+import { Link } from "react-router-dom"
 import styles from './Exam.module.css'
 
 function Exam() {
     return (
-        <>
-        <Header />
         <div className={styles.exam}>
             <div className="container">
                 <div className="row">
@@ -15,13 +13,13 @@ function Exam() {
                         <div>Sort</div>
                     </div>
                     <div className="col-md-3">
-                        <button>Thêm đề mới</button>
+                        <button>
+                            <Link to="/exam/new_exam">Thêm đề mới</Link>
+                            </button>
                     </div>
                 </div>
-                
             </div>
         </div>
-        </>
     )
 }
 

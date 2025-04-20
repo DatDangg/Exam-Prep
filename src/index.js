@@ -19,6 +19,8 @@ import Infor from "./pages/Infor/Infor";
 import ExamHistory from "./pages/ExamHistory/ExamHistory";
 import Exam from "./pages/Exam/Exam";
 import CreateExam from "./pages/CreateExam/CreateExam";
+import ExamLayout from "./layouts/ExamLayout/ExamLayout";
+import NewExam from "./pages/Exam/NewExam";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -36,8 +38,13 @@ root.render(
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/exam" element={<Exam />} />
-          <Route path="/create_exam" element={<CreateExam />} />
+
+          <Route element={<ExamLayout />}> 
+            <Route path="/exam" element={<Exam />} />
+            <Route path="/exam/new_exam" element={<NewExam />} />
+          </Route>
+          <Route path="/exam/create" element={<CreateExam />} />
+          
 
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
