@@ -15,8 +15,9 @@ services:
         fromDatabase:
           name: exam-prep-mysql
           property: password
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ./backend/Dockerfile
     autoDeploy: true
+    rootDir: backend
 
 databases:
   - name: exam-prep-mysql
