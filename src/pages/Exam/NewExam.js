@@ -8,9 +8,16 @@ import { useNavigate } from 'react-router-dom'
 function NewExam() {
     const { user } = useAuth()
     const [title, setTitle] = useState('')
+    const [error, setError] = useState('')
     const navigate = useNavigate()
 
     const handleClick = () => {
+        if (title.trim() === '') {
+            setError('Vui lòng nhập tên đề')
+            return
+        }
+
+        setError('')
         axios.post("http://localhost:8080/api/exams/create",
             {
                 "examName": title,
@@ -20,9 +27,7 @@ function NewExam() {
         .then(res => {
             const examId = res.data.examId; 
             navigate("/exam/details", {
-                state: {
-                    examId: examId  
-                }
+                state: { examId }
             });
         })
         .catch(err => console.error(err));
@@ -38,9 +43,16 @@ function NewExam() {
                         <div className={styles.wrapper}>
                             <div className={styles.inputBox}>
                                 <label htmlFor="newExam" className={styles.label}>Tên đề</label>
-                                <input value={title} id='newExam' className={styles.input} placeholder='Nhập tên đề' onChange={(e) => setTitle(e.target.value)}></input>
+                                <input
+                                    value={title}
+                                    id='newExam'
+                                    className={styles.input}
+                                    placeholder='Nhập tên đề'
+                                    onChange={(e) => setTitle(e.target.value)}
+                                />
+                                {error && <div className={styles.errorText}>{error}</div>}
                             </div>
-                            <button className={styles.button} onClick={() => handleClick()}>Tạo đề</button>
+                            <button className={styles.button} onClick={handleClick}>Tạo đề</button>
                         </div>
                     </div>
                 </div>

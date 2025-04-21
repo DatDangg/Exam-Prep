@@ -24,6 +24,7 @@ import NewExam from "./pages/Exam/NewExam";
 import ExamDetails from "./pages/ExamDetails/ExamDetails";
 import { useAuth } from "./hooks/useAuth"; 
 import { Navigate } from "react-router-dom";
+import ManageQuestion from "./pages/ExamDetails/ManageQuestion";
 
 const RequireAdmin = ({ children }) => {
   const { user, isLoadingUser } = useAuth();
@@ -48,8 +49,11 @@ root.render(
           autoClose={3000}
           hideProgressBar={false}
           closeOnClick
-          pauseOnHover
+          pauseOnHover={false}
           draggable
+          style={{
+            fontSize: '1.6rem'
+          }}
         />
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -60,7 +64,8 @@ root.render(
             <Route path="/exam/new_exam" element={<NewExam />} />
             <Route path="/exam/details" element={<ExamDetails />} />
           </Route>
-          <Route path="/exam/create" element={<CreateExam />} />
+          <Route path="/exam/details/manage_ques" element={<RequireAdmin><ManageQuestion /></RequireAdmin>} />
+          <Route path="/exam/create" element={<RequireAdmin><CreateExam /></RequireAdmin>}/>
 
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />

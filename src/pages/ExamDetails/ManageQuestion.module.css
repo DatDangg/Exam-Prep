@@ -1,0 +1,135 @@
+
+.header {
+    background-color: rgb(42, 41, 41);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.backBtn {
+    border-radius: 5px;
+    color: black;
+    padding: 8px 16px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    background-color: #ccc;
+}
+
+.backBtn:hover {
+    background-color: #8a8a8a;
+    color: white;
+}
+
+.addBtn {
+    border-radius: 5px;
+    color: white;
+    padding: 8px 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    background-color: red;
+}
+
+.addBtn:hover {
+    background-color: rgb(208, 1, 1);
+}
+
+.content {
+    margin-top: 64px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.expandBtn {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    padding: 0;
+    margin-right: 24px;
+}
+
+.expandBtn:hover {
+    background-color: #dfdfdf;
+    cursor: pointer;
+}
+
+.expandBtn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.count {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.wrapper {
+    box-shadow: 0px 2px 12px 0px rgba(0, 35, 67, .2);
+    border-radius: 6px;
+    padding: 24px;
+    margin: 12px 0 12px 0;
+    position: relative;
+}
+
+.title1 {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    padding-bottom: 8px;
+}
+
+.ques {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.question {
+    padding-top: 12px;
+    font-size: 1.4rem;
+}
+
+.expandWrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s linear;
+}
+  
+.expandWrapper.open {
+    max-height: 1000px;
+}
+  
+.expandBtn1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    margin-right: 10px;
+    padding: 0;
+    bottom: 5px;
+    right: 0;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.expandBtn1 svg {
+    width: 15px;
+    height: 15px;
+}
+
+.expandBtn1:hover {
+    color: black;
+}

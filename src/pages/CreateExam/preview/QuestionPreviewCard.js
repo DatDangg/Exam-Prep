@@ -3,12 +3,14 @@ import LatexPreview from "./LatexPreview";
 
 import styles from './QuestionPreviewCard.module.css'
 
-function QuestionPreviewCard({ question, onDelete }) {
+function QuestionPreviewCard({ question, onDelete, onUpdate, state = "" }) {
   return (
     <div className={styles.preview}>
-      <div className={styles.question}>
+      {state !== "update" &&
+        <div className={styles.question}>
           Câu hỏi: <LatexPreview text={question.question} />
-      </div>
+        </div>
+      }
       {question.choices && (
         <div className={styles.questionChoice}>
           {question.choices.map((choice) => (
@@ -20,7 +22,7 @@ function QuestionPreviewCard({ question, onDelete }) {
               </div>
               {choice.explain && (
                 <p className={styles.explainOption}>
-                {choice.explain}
+                  Giải thích: {choice.explain}
                 </p>
               )}
             </div>
@@ -35,18 +37,16 @@ function QuestionPreviewCard({ question, onDelete }) {
         </div>
       )}
 
-      {question.explain && (
+      {question.explanation && (
         <div className={styles.explain}>
-            Giải thích: <LatexPreview text={question.explain} />
+          Giải thích: <LatexPreview text={question.explanation} />
         </div>
       )}
 
-      <button
-        onClick={onDelete}
-        className={styles.delete}
-      >
-        Xoá
-      </button>
+      <button onClick={onDelete} className={styles.delete}>Xoá</button>
+      {state === "update" &&
+        <button onClick={onUpdate} className={styles.update}>Sửa</button>
+      }
     </div>
   );
 }

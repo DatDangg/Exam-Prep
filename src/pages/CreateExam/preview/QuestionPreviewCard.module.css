@@ -1,6 +1,5 @@
 .preview {
     padding: 16px;
-    margin: 20px 0;
 }
 
 .question {
@@ -58,14 +57,25 @@
 }
 
 .explain {
-    margin-top: 12px;
+    margin: 12px 0;
     font-style: italic;
     font-size: 1.6rem;
 }
 
 .delete {
     margin-top: 12px;
-    padding: 6px 12px;
+    padding: 6px 16px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.6rem;
+}
+
+.update {
+    margin: 12px 0 0 18px;
+    padding: 6px 16px;
     background-color: red;
     color: white;
     border: none;

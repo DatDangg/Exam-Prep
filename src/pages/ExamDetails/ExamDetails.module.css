@@ -1,0 +1,65 @@
+.examDetail {
+    padding-top: 12px;
+}
+
+.wrapper {
+    box-shadow: 0px 2px 12px 0px rgba(0, 35, 67, .2);
+    border-radius: 6px;
+    padding: 24px;
+    margin: 36px 0;
+}
+
+.infor {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    font-size: 1.6rem;
+    padding-bottom: 12px;
+}
+
+.count {
+    font-size: 1.4rem;
+    color: #777777;
+}
+
+.btnArea {
+    position: relative;
+    margin-bottom: -24px;
+    background-image: url(/public/edit-test.svg);
+    background-repeat: no-repeat;
+    width: 294px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mBtn, .aBtn {
+    display: block;
+    padding: 6px 12px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    box-shadow: 0px 4px 12px 0px rgba(0, 35, 67, .2);
+    border-radius: 6px;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.mBtn {
+    background-color: white;
+    color: black;
+}
+
+.aBtn {
+    background-color: red;
+    color: white;
+    
+}
+
+.icon {
+    margin-right: 5px;
+}
+  

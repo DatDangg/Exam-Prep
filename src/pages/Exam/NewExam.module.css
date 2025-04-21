@@ -31,12 +31,20 @@
     outline: none;
     border: 1px solid #ccc;
     border-radius: 7px;
-    margin-bottom: 24px;
+    margin-bottom: 4px;
     font-size: 1.3rem;
     padding: 6px;
 }
 
+.errorText {
+    color: red;
+    font-size: 1.3rem;
+    margin-top: 4px;
+}
+
+
 .button {
+    margin-top: 24px;
     padding: 6px 10px;
     font-size: 1.3rem;
     font-weight: 600;
@@ -49,3 +57,4 @@
 .button:hover {
     background-color: rgb(208, 1, 1);
 }
+

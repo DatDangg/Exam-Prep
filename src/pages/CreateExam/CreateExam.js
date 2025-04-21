@@ -1,6 +1,6 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./CreateExam.module.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import SelectTypeStep from "./steps/SelectTypeStep";
@@ -8,6 +8,7 @@ import QuestionStep from "./steps/QuestionStep";
 import PreviewQuestion from "./preview/PreviewQuestion";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import { validateQuestionInput } from "../../utils/validateQuestion";
 
 function CreateExam() {
   const [questions, setQuestions] = useState([]);
@@ -17,11 +18,42 @@ function CreateExam() {
   const [explanations, setExplanations] = useState({});
   const [questionType, setQuestionType] = useState("Part_1");
   const [explain, setExplain] = useState("");
-  const [count, setCount] = useState([])
+  const [count, setCount] = useState()
 
   const navigate = useNavigate()
   const location = useLocation();
   const examId = location.state?.examId || "";
+  const editQues = location.state?.editQues;
+
+  useEffect(() => {
+    if (editQues) {
+      setQuestionType(editQues.type || "Part_1");
+      setQues(editQues.question || "");
+      setExplain(editQues.explanation || "");
+
+      if (editQues.choices) {
+        const opts = {};
+        const ans = {};
+        const expl = {};
+        editQues.choices.forEach((choice) => {
+          opts[choice.label] = choice.text;
+          ans[choice.label] = choice.correct ? "true" : "false";
+          expl[choice.label] = choice.explain || "";
+        });
+        setOptions(opts);
+        setAnswer(ans);
+        setExplanations(expl);
+      }
+
+      if (editQues.type === "Part_3" && editQues.answer) {
+        const obj = {};
+        editQues.answer.split("").forEach((char, idx) => {
+          obj[idx] = char;
+        });
+        setAnswer(obj);
+      }
+    }
+  }, []);
 
   const fetchCount = async () => {
     try {
@@ -31,28 +63,14 @@ function CreateExam() {
       console.log(err);
     }
   };
-  
+
   useEffect(() => {
     fetchCount();
   }, []);
-  
-  const validateInputs = () => {
-    if (ques.trim() === "") return "Câu hỏi không được để trống";
-    if (questionType !== "Part_3" && Object.keys(options).length < 4) return "Bạn cần nhập các lựa chọn";
-    if (questionType === "Part_2") {
-      if (Object.keys(explanations).length < 4) return "Bạn cần nhập giải thích cho từng phần";
-      if (Object.keys(answer).length < 4) return "Bạn cần chọn đáp án cho từng phần";
-    }
-    if (questionType === "Part_3" && Object.keys(answer).length === 0) return "Bạn nhập chọn đáp án đúng";
-    if (questionType === "Part_1" && Object.keys(answer).length === 0) return "Bạn cần chọn đáp án đúng";
-    if (questionType !== "Part_2" && explain.trim() === "") return "Bạn cần nhập giải thích";
-    return null;
-  };
-  
-  const handleAddQuestion = async  () => {
-    const error = validateInputs();
-    if (error) return toast.error(error, { pauseOnHover: false });
 
+  const handleAddQuestion = async () => {
+    const error = validateQuestionInput({ ques, questionType, options, answer, explanations, explain, });
+    if (error) return toast.error(error, { pauseOnHover: false });
 
     let newQuestion = {
       type: questionType,
@@ -75,25 +93,26 @@ function CreateExam() {
     }
 
     try {
-      const res = await axios.post(`http://localhost:8080/api/questions/add/${examId}`, newQuestion);
-      newQuestion.questionId = res.data.questionId
+      if (editQues && editQues.questionId) {
+        await axios.put(`http://localhost:8080/api/questions/${editQues.questionId}`, newQuestion);
+        toast("Cập nhật câu hỏi thành công");
+        navigate("/exam/details/manage_ques", {
+          state: {
+            examId: examId
+          }
+        });
+      } else {
+        const res = await axios.post(`http://localhost:8080/api/questions/add/${examId}`, newQuestion);
+        newQuestion.questionId = res.data.questionId;
+        setQuestions([...questions, newQuestion]);
+        toast("Lưu câu hỏi thành công");
+      }
 
-      setQuestions([...questions, newQuestion]);
-      
-      await fetchCount(); 
-
-      toast("Lưu câu hỏi thành công", {
-        autoClose: 2000,
-        className: styles.customToast,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-      });
+      await fetchCount();
     } catch (err) {
       toast.error("Lỗi khi lưu câu hỏi");
     }
-  
+
     setOptions({});
     setAnswer({});
     setExplanations({});
@@ -123,41 +142,44 @@ function CreateExam() {
     setAnswer(obj);
   };
 
-
-
   const handleDelete = async (index) => {
     const questionToDelete = questions[index];
+    console.log(index)
     try {
       await axios.delete(`http://localhost:8080/api/questions/${questionToDelete.questionId}`);
       const filtered = questions.filter((_, idx) => idx !== index);
       setQuestions(filtered);
-      toast("Đã xoá câu hỏi", {
-        autoClose: 2000,
-        className: styles.customToast,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-      });
+      await fetchCount();
+      toast("Đã xoá câu hỏi");
     } catch (err) {
       toast.error("Xoá thất bại");
     }
   };
 
   const handleBack = () => {
-    navigate("/exam/details", {
-      state: {
-          examId: examId  
-      }
-  });
+    if (location.state?.editQues) {
+      navigate("/exam/details/manage_ques", {
+        state: {
+          examId: examId
+        }
+      });
+    }
+    else {
+      navigate("/exam/details", {
+        state: {
+          examId: examId
+        }
+      });
+    }
   }
-  
+
   return (
     <div className={styles.exam}>
-      <ToastContainer />
       <div className={styles.header}>
-        <button onClick={() => handleBack()} className={styles.backBtn}>Back</button>
-        <button onClick={() => handleAddQuestion} className={styles.examBtn}>Lưu và thêm câu hỏi</button>
+        <button onClick={handleBack} className={styles.backBtn}>Quay lại</button>
+        <button onClick={handleAddQuestion} className={styles.examBtn} >
+          {location.state?.editQues ? "Cập nhật câu hỏi" : "Lưu và thêm câu hỏi"}
+        </button>
       </div>
       <div className="container">
         <div className={styles.title}>
@@ -179,7 +201,7 @@ function CreateExam() {
             onExplainTextChange={setExplain}
             onDigitChange={handleDigitAnswer}
           />
-          <PreviewQuestion questions={questions} onDelete={handleDelete} type={questionType}/>
+          <PreviewQuestion questions={questions} onDelete={handleDelete} type={questionType} />
         </div>
       </div>
     </div>
