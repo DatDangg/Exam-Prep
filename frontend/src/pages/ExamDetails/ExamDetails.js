@@ -6,13 +6,14 @@ import { ReactComponent as EditIcon } from '../../assets/img/edit-test.svg';
 
 
 function ExamDetails() {
+    const API = process.env.REACT_APP_API_URL;
     const location = useLocation();
     const examId = location.state?.examId || "";
     const [exam, setExam] = useState([])
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/api/exams/${examId}/detail`)
+        axios.get(`${API}/exams/${examId}/detail`)
             .then(res => {
                 setExam(res.data)
             })

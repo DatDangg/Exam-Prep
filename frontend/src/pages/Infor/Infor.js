@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 function Infor() {
+    const API = process.env.REACT_APP_API_URL;
     const { user, isAuthenticated } = useAuth()
     const [infor, setInfor] = useState({})
     const navigate = useNavigate()
@@ -23,7 +24,7 @@ function Infor() {
             navigate("/login");
         }
         else {
-            axios.get(`http://localhost:8080/api/users/infor/${user.userId}`)
+            axios.get(`${API}/users/infor/${user.userId}`)
                 .then(res => {
                     const userInfor = res.data.user
                     setInfor(userInfor)
@@ -44,7 +45,7 @@ function Infor() {
 
     const changeInfor = async () => {
         try {
-            await axios.put(`http://localhost:8080/api/users/update/${user.userId}`, {
+            await axios.put(`${API}/users/update/${user.userId}`, {
                     ...infor,
                     username: formState.username,
                     email: formState.email,

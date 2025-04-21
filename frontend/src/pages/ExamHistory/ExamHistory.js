@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 function ExamHistory() {
+    const API = process.env.REACT_APP_API_URL;
     const [exams, setExams] = useState([])
     const { user, isAuthenticated } = useAuth() 
     const navigate = useNavigate()
@@ -15,7 +16,7 @@ function ExamHistory() {
             navigate("/login");
         }
         else {
-            axios.get(`http://localhost:8080/api/users/completed/${user.userId}`)
+            axios.get(`${API}/users/completed/${user.userId}`)
             .then(res => {
                 setExams(res.data)
             })

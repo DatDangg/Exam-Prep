@@ -8,6 +8,7 @@ import QuestionPreviewCard from '../CreateExam/preview/QuestionPreviewCard';
 import LatexPreview from '../CreateExam/preview/LatexPreview';
 
 function ManageQuestion() {
+  const API = process.env.REACT_APP_API_URL;
   const location = useLocation();
   const examId = location.state?.examId || "";
   const [questions, setQuestions] = useState([])
@@ -17,7 +18,7 @@ function ManageQuestion() {
   useEffect(() => {
     const fetchExamData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8080/api/exams/${examId}/detail`);
+        const res = await axios.get(`${API}/exams/${examId}/detail`);
         setQuestions(res.data.questions);
         console.log(res.data)
         setCount(res.data.questionCount);
@@ -32,11 +33,11 @@ function ManageQuestion() {
   const handleDelete = async (index) => {
     const questionToDelete = questions[index];
     try {
-      await axios.delete(`http://localhost:8080/api/questions/${questionToDelete.questionId}`);
+      await axios.delete(`${API}/questions/${questionToDelete.questionId}`);
       const filtered = questions.filter((_, idx) => idx !== index);
       setQuestions(filtered);
 
-      const res = await axios.get(`http://localhost:8080/api/exams/${examId}/detail`);
+      const res = await axios.get(`${API}/exams/${examId}/detail`);
       setCount(res.data.questionCount);
 
       toast("Đã xoá câu hỏi");

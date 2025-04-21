@@ -2,7 +2,8 @@ import axios from "axios";
 import * as yup from "yup";
 
 const isEmailExited = async (email) => {
-  const res = await axios.get(`http://localhost:8080/api/users/check-email`, {
+  const API = process.env.REACT_APP_API_URL;
+  const res = await axios.get(`${API}/users/check-email`, {
     params: { email }
   });
   return res.data.exists; // true nếu đã tồn tại

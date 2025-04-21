@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function Exam() {
+    const API = process.env.REACT_APP_API_URL;
     const [exams, setExams] = useState([]);
     const [allExams, setAllExams] = useState([]);
     const [text, setText] = useState('');
@@ -11,7 +12,7 @@ function Exam() {
     const [sortOrder, setSortOrder] = useState('asc');
     const navigate = useNavigate();
     useEffect(() => {
-        axios.get("http://localhost:8080/api/exams")
+        axios.get(`${API}/exams`)
             .then(res => {
                 setExams(res.data);
                 setAllExams(res.data);

@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 function NewExam() {
+    const API = process.env.REACT_APP_API_URL;
     const { user } = useAuth()
     const [title, setTitle] = useState('')
     const [error, setError] = useState('')
@@ -18,7 +19,7 @@ function NewExam() {
         }
 
         setError('')
-        axios.post("http://localhost:8080/api/exams/create",
+        axios.post(`${API}/exams/create`,
             {
                 "examName": title,
                 "createdBy": user.userId

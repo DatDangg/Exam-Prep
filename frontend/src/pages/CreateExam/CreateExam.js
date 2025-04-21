@@ -11,6 +11,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { validateQuestionInput } from "../../utils/validateQuestion";
 
 function CreateExam() {
+  const API = process.env.REACT_APP_API_URL;
   const [questions, setQuestions] = useState([]);
   const [ques, setQues] = useState("");
   const [options, setOptions] = useState({});
@@ -57,7 +58,7 @@ function CreateExam() {
 
   const fetchCount = async () => {
     try {
-      const res = await axios.get(`http://localhost:8080/api/exams/${examId}/detail`);
+      const res = await axios.get(`${API}/exams/${examId}/detail`);
       setCount(res.data.questionCount);
     } catch (err) {
       console.log(err);
@@ -94,7 +95,7 @@ function CreateExam() {
 
     try {
       if (editQues && editQues.questionId) {
-        await axios.put(`http://localhost:8080/api/questions/${editQues.questionId}`, newQuestion);
+        await axios.put(`${API}/questions/${editQues.questionId}`, newQuestion);
         toast("Cập nhật câu hỏi thành công");
         navigate("/exam/details/manage_ques", {
           state: {
@@ -102,7 +103,7 @@ function CreateExam() {
           }
         });
       } else {
-        const res = await axios.post(`http://localhost:8080/api/questions/add/${examId}`, newQuestion);
+        const res = await axios.post(`${API}/questions/add/${examId}`, newQuestion);
         newQuestion.questionId = res.data.questionId;
         setQuestions([...questions, newQuestion]);
         toast("Lưu câu hỏi thành công");
@@ -146,7 +147,7 @@ function CreateExam() {
     const questionToDelete = questions[index];
     console.log(index)
     try {
-      await axios.delete(`http://localhost:8080/api/questions/${questionToDelete.questionId}`);
+      await axios.delete(`${API}/questions/${questionToDelete.questionId}`);
       const filtered = questions.filter((_, idx) => idx !== index);
       setQuestions(filtered);
       await fetchCount();

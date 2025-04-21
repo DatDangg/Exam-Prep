@@ -6,6 +6,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [isLoadingUser, setIsLoadingUser] = useState(true);
+    const API = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         const savedUser = localStorage.getItem("user");
@@ -18,7 +19,7 @@ export const AuthProvider = ({ children }) => {
     const login = async ({ email, password }) => {
         try {
             const res = await axios.post(
-                "http://localhost:8080/api/users/login",
+                `${API}/users/login`,
                 { email: email, password: password },
                 {
                     headers: {
@@ -49,7 +50,7 @@ export const AuthProvider = ({ children }) => {
     const register = async (data) => {
         try {
             console.log(data);
-            await axios.post("http://localhost:8080/api/users/register", data, {
+            await axios.post(`${API}/users/register`, data, {
                 headers: {
                     "Content-Type": "application/json",
                 },
