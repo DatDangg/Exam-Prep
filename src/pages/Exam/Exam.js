@@ -73,7 +73,7 @@ function Exam() {
 
     const handleRowClick = (value) => {
         navigate("/exam/details", {
-          state: { examName: value },
+          state: { examId: value },
         });
     };
 
@@ -123,7 +123,7 @@ function Exam() {
                         <tbody>
                             {exams.map(exam => (
                                 <tr key={exam.examId}>
-                                    <td className={styles.td} onClick={() => handleRowClick(exam.examName)}>
+                                    <td className={styles.td} onClick={() => handleRowClick(exam.examId)}>
                                         {exam.examName}
                                     </td>
                                     <td className={styles.td}>{exam.createdBy}</td>

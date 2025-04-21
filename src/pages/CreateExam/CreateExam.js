@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import styles from "./CreateExam.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +7,7 @@ import SelectTypeStep from "./steps/SelectTypeStep";
 import QuestionStep from "./steps/QuestionStep";
 import PreviewQuestion from "./preview/PreviewQuestion";
 import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function CreateExam() {
   const [questions, setQuestions] = useState([]);
@@ -16,29 +17,42 @@ function CreateExam() {
   const [explanations, setExplanations] = useState({});
   const [questionType, setQuestionType] = useState("Part_1");
   const [explain, setExplain] = useState("");
+  const [count, setCount] = useState([])
 
+  const navigate = useNavigate()
+  const location = useLocation();
+  const examId = location.state?.examId || "";
+
+  const fetchCount = async () => {
+    try {
+      const res = await axios.get(`http://localhost:8080/api/exams/${examId}/detail`);
+      setCount(res.data.questionCount);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+  useEffect(() => {
+    fetchCount();
+  }, []);
+  
+  const validateInputs = () => {
+    if (ques.trim() === "") return "Câu hỏi không được để trống";
+    if (questionType !== "Part_3" && Object.keys(options).length < 4) return "Bạn cần nhập các lựa chọn";
+    if (questionType === "Part_2") {
+      if (Object.keys(explanations).length < 4) return "Bạn cần nhập giải thích cho từng phần";
+      if (Object.keys(answer).length < 4) return "Bạn cần chọn đáp án cho từng phần";
+    }
+    if (questionType === "Part_3" && Object.keys(answer).length === 0) return "Bạn nhập chọn đáp án đúng";
+    if (questionType === "Part_1" && Object.keys(answer).length === 0) return "Bạn cần chọn đáp án đúng";
+    if (questionType !== "Part_2" && explain.trim() === "") return "Bạn cần nhập giải thích";
+    return null;
+  };
+  
   const handleAddQuestion = async  () => {
-    if (ques.trim() === "") {
-      return toast.error("Câu hỏi không được để trống", { pauseOnHover: false });
-    }
-    if (questionType !== "Part_3" && Object.keys(options).length < 4) {
-      return toast.error("Bạn cần nhập các lựa chọn", { pauseOnHover: false });
-    }
-    if (questionType === "Part_2" && Object.keys(explanations).length < 4) {
-      return toast.error("Bạn cần nhập giải thích cho từng phần", { pauseOnHover: false });
-    }
-    if (questionType === "Part_2" && Object.keys(answer).length < 4) {
-      return toast.error("Bạn cần chọn đáp án cho từng phần", { pauseOnHover: false });
-    }
-    if (questionType === "Part_3" && Object.keys(answer).length === 0) {
-      return toast.error("Bạn nhập chọn đáp án đúng", { pauseOnHover: false });
-    }
-    if (questionType === "Part_1" && Object.keys(answer).length === 0) {
-      return toast.error("Bạn cần chọn đáp án đúng", { pauseOnHover: false });
-    }
-    if (questionType !== "Part_2" && explain.trim() === "") {
-      return toast.error("Bạn cần nhập giải thích", { pauseOnHover: false });
-    }
+    const error = validateInputs();
+    if (error) return toast.error(error, { pauseOnHover: false });
+
 
     let newQuestion = {
       type: questionType,
@@ -61,10 +75,12 @@ function CreateExam() {
     }
 
     try {
-      const res = await axios.post("http://localhost:8080/api/questions/add", newQuestion);
+      const res = await axios.post(`http://localhost:8080/api/questions/add/${examId}`, newQuestion);
       newQuestion.questionId = res.data.questionId
 
       setQuestions([...questions, newQuestion]);
+      
+      await fetchCount(); 
 
       toast("Lưu câu hỏi thành công", {
         autoClose: 2000,
@@ -107,6 +123,8 @@ function CreateExam() {
     setAnswer(obj);
   };
 
+
+
   const handleDelete = async (index) => {
     const questionToDelete = questions[index];
     try {
@@ -125,19 +143,25 @@ function CreateExam() {
       toast.error("Xoá thất bại");
     }
   };
-  
 
+  const handleBack = () => {
+    navigate("/exam/details", {
+      state: {
+          examId: examId  
+      }
+  });
+  }
   
-
   return (
     <div className={styles.exam}>
       <ToastContainer />
       <div className={styles.header}>
-        <button onClick={handleAddQuestion} className={styles.examBtn}>Lưu và thêm câu hỏi</button>
+        <button onClick={() => handleBack()} className={styles.backBtn}>Back</button>
+        <button onClick={() => handleAddQuestion} className={styles.examBtn}>Lưu và thêm câu hỏi</button>
       </div>
       <div className="container">
         <div className={styles.title}>
-          Đề có: <span>{questions.length} câu hỏi</span>
+          Đề có: <span>{count} câu hỏi</span>
         </div>
         <div className={styles.wrapper}>
           <SelectTypeStep questionType={questionType} onChange={setQuestionType} />

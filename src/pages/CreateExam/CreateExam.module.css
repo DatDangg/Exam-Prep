@@ -16,8 +16,23 @@
     right: 0;
     height: 50px;
     display: flex;
-    justify-content:flex-end;
+    justify-content: space-between;
     padding: 8px;
+}
+
+.backBtn {
+    border-radius: 5px;
+    color: black;
+    padding: 8px 16px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    background-color: #ccc;
+}
+
+.backBtn:hover {
+    background-color: #8a8a8a;
+    color: white;
 }
 
 .examBtn {
@@ -28,6 +43,10 @@
     font-weight: 700;
     border: none;
     background-color: red;
+}
+
+.examBtn:hover {
+    background-color: rgb(208, 1, 1);
 }
 
 .title {

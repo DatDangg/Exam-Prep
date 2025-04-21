@@ -18,9 +18,12 @@ function NewExam() {
             }
         )
         .then(res => {
+            const examId = res.data.examId; 
             navigate("/exam/details", {
-                state: { examName: title }
-              });
+                state: {
+                    examId: examId  
+                }
+            });
         })
         .catch(err => console.error(err));
     }
