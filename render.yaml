@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: exam-prep-backend
+    name: exam-prep
     runtime: docker
     envVars:
       - key: DATABASE_URL
