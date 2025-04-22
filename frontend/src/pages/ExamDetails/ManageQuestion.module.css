@@ -9,6 +9,7 @@
     display: flex;
     justify-content: space-between;
     padding: 8px;
+    z-index: 999;
 }
 
 .backBtn {

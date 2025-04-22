@@ -19,7 +19,19 @@ function QuestionInput({ ques, onChange }) {
           <LatexPreview text={ques} />
         </div>
       </div>
-      <ImageUpload target="ques" />
+      <ImageUpload
+  target="ques"
+  onInsertImage={(markdown) => {
+    const textarea = document.getElementById("ques-input");
+    if (!textarea) return;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const updated = ques.slice(0, start) + markdown + ques.slice(end);
+    onChange(updated);
+  }}
+/>
+
+
     </div>
   );
 }
