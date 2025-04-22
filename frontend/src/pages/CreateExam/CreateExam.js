@@ -95,7 +95,7 @@ function CreateExam() {
 
     try {
       if (editQues && editQues.questionId) {
-        await axios.put(`${API}/questions/${editQues.questionId}`, newQuestion);
+        await axios.put(`${API}/questions/update/${editQues.questionId}`, newQuestion);
         toast("Cập nhật câu hỏi thành công");
         navigate("/exam/details/manage_ques", {
           state: {

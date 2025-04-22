@@ -19,6 +19,13 @@
     padding-bottom: 12px;
 }
 
+#nameEdit:hover {
+    background-color: #e4f1fb;
+    border-radius: 2px 2px 2px 2px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
 .count {
     font-size: 1.4rem;
     color: #777777;

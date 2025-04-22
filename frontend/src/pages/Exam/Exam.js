@@ -15,6 +15,7 @@ function Exam() {
         axios.get(`${API}/exams`)
             .then(res => {
                 setExams(res.data);
+                console.log(res.data)
                 setAllExams(res.data);
             })
             .catch(err => console.log(err));
@@ -119,6 +120,7 @@ function Exam() {
                                 <th className={styles.th}>Tên đề</th>
                                 <th className={styles.th}>Người tạo</th>
                                 <th className={styles.th}>Thời gian tạo</th>
+                                <th className={styles.th}>Cập nhật lần cuối</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -129,6 +131,7 @@ function Exam() {
                                     </td>
                                     <td className={styles.td}>{exam.createdBy}</td>
                                     <td className={styles.td}>{exam.createdAt}</td>
+                                    <td className={styles.td}>{exam.updatedAt}</td>
                                 </tr>
                             ))}
                         </tbody>

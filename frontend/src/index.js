@@ -25,6 +25,7 @@ import ExamDetails from "./pages/ExamDetails/ExamDetails";
 import { useAuth } from "./hooks/useAuth"; 
 import { Navigate } from "react-router-dom";
 import ManageQuestion from "./pages/ExamDetails/ManageQuestion";
+import PracticeExam from "./pages/PracticeExam/PracticeExam";
 
 const RequireAdmin = ({ children }) => {
   const { user, isLoadingUser } = useAuth();
@@ -70,6 +71,8 @@ root.render(
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
           </Route>
+
+          <Route path="/practice" element={<PracticeExam />}/>
 
           <Route path="/user" element={<InforLayout />}>
             <Route path="infor" element={<Infor />} />

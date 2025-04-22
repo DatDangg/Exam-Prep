@@ -76,7 +76,7 @@ function Header() {
               className={`col order-md-0 justify-content-center ${styles.navbarList}`}
             >
               <li className={`${styles.navListItem}`}>
-                <Link to="#" className={styles.Link}>Thi thử</Link>
+                <Link to="/practice" className={styles.Link}>Thi thử</Link>
               </li>
               <li className={`${styles.navListItem}`}>
                 <Link to="#" className={styles.Link}>Luyện để</Link>
