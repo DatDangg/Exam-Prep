@@ -26,6 +26,7 @@ import { useAuth } from "./hooks/useAuth";
 import { Navigate } from "react-router-dom";
 import ManageQuestion from "./pages/ExamDetails/ManageQuestion";
 import PracticeExam from "./pages/PracticeExam/PracticeExam";
+import PracticeLayout from "./layouts/PracticeLayout/PracticeLayout";
 
 const RequireAdmin = ({ children }) => {
   const { user, isLoadingUser } = useAuth();
@@ -60,11 +61,12 @@ root.render(
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          <Route element={<RequireAdmin><ExamLayout /></RequireAdmin>}>
+          <Route element={<RequireAdmin> <ExamLayout /> </RequireAdmin>}>
             <Route path="/exam" element={<Exam />} />
             <Route path="/exam/new_exam" element={<NewExam />} />
             <Route path="/exam/details" element={<ExamDetails />} />
           </Route>
+          
           <Route path="/exam/details/manage_ques" element={<RequireAdmin><ManageQuestion /></RequireAdmin>} />
           <Route path="/exam/create" element={<RequireAdmin><CreateExam /></RequireAdmin>}/>
 
@@ -72,7 +74,9 @@ root.render(
             <Route path="/" element={<Home />} />
           </Route>
 
-          <Route path="/practice" element={<PracticeExam />}/>
+          <Route element={<PracticeLayout />}>
+            <Route path="/practice" element={<PracticeExam />}/>
+          </Route>
 
           <Route path="/user" element={<InforLayout />}>
             <Route path="infor" element={<Infor />} />

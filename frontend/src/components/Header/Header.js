@@ -72,46 +72,46 @@ function Header() {
                 </div>
               </div>
               {user?.role === 'student' ?
-            <ul
-              className={`col order-md-0 justify-content-center ${styles.navbarList}`}
-            >
-              <li className={`${styles.navListItem}`}>
-                <Link to="/practice" className={styles.Link}>Thi thử</Link>
-              </li>
-              <li className={`${styles.navListItem}`}>
-                <Link to="#" className={styles.Link}>Luyện để</Link>
-              </li>
-              <li className={`${styles.navListItem}`}>
-                <Link to="#" className={styles.Link}>Bài viết</Link>
-              </li>
-            </ul>
-            :
-            <ul
-              className={`col order-md-0 justify-content-center ${styles.navbarList}`}
-            >
-              <li className={`${styles.navListItem}`}>
-                <Link to="#" className={styles.Link}>Thi thử</Link>
-              </li>
-              <li className={`${styles.navListItem}`}>
-                <Link to="#" className={styles.Link}>Luyện để</Link>
-              </li>
-              <li className={`${styles.navListItem}`}>
-                <Link to="/exam" className={styles.Link}> Danh sách đề</Link>
-              </li>
-            </ul>
-          } 
+                <ul
+                  className={`col order-md-0 justify-content-center ${styles.navbarList}`}
+                >
+                  <li className={`${styles.navListItem}`}>
+                    <Link to="/practice" className={styles.Link}>Thi thử</Link>
+                  </li>
+                  <li className={`${styles.navListItem}`}>
+                    <Link to="#" className={styles.Link}>Luyện để</Link>
+                  </li>
+                  <li className={`${styles.navListItem}`}>
+                    <Link to="#" className={styles.Link}>Bài viết</Link>
+                  </li>
+                </ul>
+                :
+                <ul
+                  className={`col order-md-0 justify-content-center ${styles.navbarList}`}
+                >
+                  <li className={`${styles.navListItem}`}>
+                    <Link to="#" className={styles.Link}>Thi thử</Link>
+                  </li>
+                  <li className={`${styles.navListItem}`}>
+                    <Link to="#" className={styles.Link}>Luyện để</Link>
+                  </li>
+                  <li className={`${styles.navListItem}`}>
+                    <Link to="/exam" className={styles.Link}> Danh sách đề</Link>
+                  </li>
+                </ul>
+              }
             </div>
           </div>
           <Link to="/" className={`col-auto order-md-first ${styles.logo}`}>
             Exam Test Prepare
           </Link>
-          
+
           {user?.role === 'student' ?
             <ul
               className={`col order-md-0 justify-content-center ${styles.navBar}`}
             >
               <li className={`${styles.navItem}`}>
-                <Link to="#" className={styles.Link}>Thi thử</Link>
+                <Link to="/practice" className={styles.Link}>Thi thử</Link>
               </li>
               <li className={`${styles.navItem}`}>
                 <Link to="#" className={styles.Link}>Luyện đề</Link>
@@ -134,7 +134,7 @@ function Header() {
                 <Link to="/exam" className={styles.Link}>Danh sách đề</Link>
               </li>
             </ul>
-          } 
+          }
 
 
 

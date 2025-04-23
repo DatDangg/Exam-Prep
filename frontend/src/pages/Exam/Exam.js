@@ -15,7 +15,6 @@ function Exam() {
         axios.get(`${API}/exams`)
             .then(res => {
                 setExams(res.data);
-                console.log(res.data)
                 setAllExams(res.data);
             })
             .catch(err => console.log(err));
