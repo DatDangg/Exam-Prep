@@ -13,3 +13,8 @@ code {
 html {
   font-size: 62.5%; 
 }
+
+input[type="radio"] {
+  width: 16px;
+  height: 16px;
+}

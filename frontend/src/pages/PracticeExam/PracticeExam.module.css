@@ -1,0 +1,29 @@
+.practice {
+
+}
+
+.wrapper {
+    border: 1px solid #9931df;
+    margin: 6px 0;
+    padding: 12px;
+}
+
+.wrap {
+    display: flex;
+    align-items: flex-end;
+    white-space: nowrap;
+}
+
+.title {
+    margin-right: 5px;
+    width: 72px;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+}
+
+.desc {
+    font-size: 1.6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -27,6 +27,8 @@ import { Navigate } from "react-router-dom";
 import ManageQuestion from "./pages/ExamDetails/ManageQuestion";
 import PracticeExam from "./pages/PracticeExam/PracticeExam";
 import PracticeLayout from "./layouts/PracticeLayout/PracticeLayout";
+import PracticeDetail from "./pages/PracticeExam/PracticeDetail";
+import PracticeTest from "./pages/PracticeTest/PracticeTest";
 
 const RequireAdmin = ({ children }) => {
   const { user, isLoadingUser } = useAuth();
@@ -76,6 +78,8 @@ root.render(
 
           <Route element={<PracticeLayout />}>
             <Route path="/practice" element={<PracticeExam />}/>
+            <Route path="/practice/detail" element={<PracticeDetail />}/>
+            <Route path="/practice/test" element={<PracticeTest />}/>
           </Route>
 
           <Route path="/user" element={<InforLayout />}>

@@ -17,7 +17,7 @@ function QuestionPreviewCard({ question, onDelete, onUpdate, state = "" }) {
             <div key={choice.label} className={styles.questionChoiceItem}>
               <div className={choice.correct ? `${styles.answer} ${styles.correct}` : `${styles.answer}`}>
                 <p className={styles.label}>{choice.label}.</p>
-                <p className={styles.text}>{choice.text}</p>
+                <p className={styles.text}><LatexPreview text={choice.text} /></p>
                 <p className={styles.choice}>{choice.correct ? "✓" : ""}</p>
               </div>
               {choice.explain && (

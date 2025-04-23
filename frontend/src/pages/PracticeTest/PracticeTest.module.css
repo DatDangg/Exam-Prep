@@ -1,0 +1,184 @@
+.practice {
+    margin-top: 36px;
+    position: relative;
+}
+
+.head {
+    margin-bottom: 36px;
+}
+
+.heading {
+    font-size: 2rem;
+    color: red;
+    font-weight: 600;
+}
+
+.backBtn {
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    padding: 6px 20px;
+    margin-top: 24px;
+}
+
+.countDown {
+    position: sticky;
+    top: 36px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    pointer-events: none;
+    z-index: 99999;
+}
+
+.time {
+    background-color: #EAF4DD;
+    border-radius: 12px;
+    display: block;
+    width: fit-content;
+    padding: 4px 8px;
+    color: #027654;
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.time svg {
+    margin-right: 5px;
+}
+
+.wrapper {
+    padding-bottom: 60px;
+    position: relative;
+}
+
+.wrapper:not(:last-child)::after {  
+    content: "";
+    margin: 20px 0;
+    width: 60px;
+    height: 1px;
+    background-color: #ccc;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.title {
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+}
+
+.questionNumber {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.flag {
+    border: 1px solid red;
+    color: red;
+    background-color: white;
+    border-radius: 8px;
+    padding: 4px 12px;
+    font-size: 1.2rem;
+}
+
+.questionId {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.content {
+    padding-top: 12px;
+}
+
+.question {
+    font-size: 1.6rem;
+    padding: 8px 0;
+}
+
+.choices {
+    
+}
+
+.choice {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    padding: 6px 0;
+}
+
+.choiceLabel {
+    margin: 0 3px 0 8px;
+}
+
+.trueFalseRow {
+    display: flex;
+    align-items: center;
+}
+
+.choiceRadio {
+    margin: 0 12px;
+}
+
+.table {
+    font-size: 1.6rem;
+}
+  
+.table th,
+.table td {
+    padding: 12px 12px 12px 0;
+    text-align: center;
+}
+
+.table td:first-child {
+    text-align: left;
+    width: 70%;
+}
+
+.choiceLabel {
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+.part3 {
+    overflow-x: auto;
+}
+
+.part3Table {
+    margin-top: 1rem;
+}
+
+.part3 tr {
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+}
+
+
+.part3Text,
+.part3Input {
+    padding: 0 4px;
+    text-align: center;
+    line-height: 0.54;
+}
+
+.part3Text {
+    font-size: 1.6rem;
+    line-height: 0.8;
+    width: 17px;
+    margin-right: 4px;
+}
+
+.sideBar {
+    position: fixed;
+    background-color: red;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 120px;
+}

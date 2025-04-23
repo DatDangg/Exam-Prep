@@ -7,7 +7,7 @@ const Latex = ({ tex }) => {
     throwOnError: false,
   });
 
-  return <span dangerouslySetInnerHTML={{ __html: html }} />;
+  return <span style={{fontSize: "2rem"}} dangerouslySetInnerHTML={{ __html: html }} />;
 };
 
 export default Latex;

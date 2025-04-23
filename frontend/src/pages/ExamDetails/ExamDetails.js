@@ -18,7 +18,6 @@ function ExamDetails() {
     const wrapRef = useRef()
     const fixRef = useRef()
    
-
     useEffect(() => {
         axios.get(`${API}/exams/${examId}/detail`)
             .then(res => {
