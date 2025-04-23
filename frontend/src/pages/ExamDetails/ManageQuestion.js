@@ -20,7 +20,6 @@ function ManageQuestion() {
       try {
         const res = await axios.get(`${API}/exams/${examId}/detail`);
         setQuestions(res.data.questions);
-        console.log(res.data)
         setCount(res.data.questionCount);
       } catch (err) {
         console.log(err);

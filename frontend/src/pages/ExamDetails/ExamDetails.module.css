@@ -9,6 +9,19 @@
     margin: 36px 0;
 }
 
+.wrap {
+    display: flex;
+    align-items: center;
+}
+
+.close {
+    display: none;
+}
+
+.open {
+    display: block;
+}
+
 .infor {
     display: flex;
     flex-direction: column;
@@ -19,6 +32,12 @@
     padding-bottom: 12px;
 }
 
+#nameEdit {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
 #nameEdit:hover {
     background-color: #e4f1fb;
     border-radius: 2px 2px 2px 2px;
@@ -26,9 +45,16 @@
     cursor: pointer;
 }
 
-.count {
+#nameEdit svg {
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+}
+
+.detail {
     font-size: 1.4rem;
     color: #777777;
+    margin-bottom: 12px;
 }
 
 .btnArea {
@@ -70,3 +96,52 @@
     margin-right: 5px;
 }
   
+.fix {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    font-size: 1.6rem;
+}
+
+.fixTitle {
+    margin-right: 7px;
+    width: 130px;
+}
+
+.wrap select {
+    padding: 5px;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.wrap input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    padding: 5px;
+    font-size: 1.4rem;
+}
+
+.wrap input:focus {
+    border: 1px solid black;
+}
+
+.saveBtn {
+    border-radius: 5px;
+    border: none;
+    padding: 6px 12px;
+    margin-top: 24px;
+    background-color: red;
+    color: white;
+    margin-right: 18px;
+}
+
+.backBtn {
+    border-radius: 5px;
+    border: none;
+    padding: 6px 12px;
+    margin-top: 24px;
+    background-color: #ccc;
+    color: black;
+}
