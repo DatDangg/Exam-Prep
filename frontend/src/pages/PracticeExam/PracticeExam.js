@@ -2,7 +2,9 @@ import styles from './PracticeExam.module.css'
 
 function PracticeExam() {
     return (
-        <div>HIHIHIHI</div>
+        <div className={styles.practice}>
+            <div cl></div>
+        </div>
     )
 }
 

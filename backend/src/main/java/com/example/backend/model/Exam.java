@@ -12,4 +12,6 @@ public class Exam {
     private String examName;
     private String createdBy;
     private String createdAt;
+    private String updatedAt;
+    private boolean locked = false;
 }

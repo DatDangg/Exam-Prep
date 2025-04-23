@@ -8,6 +8,7 @@ import com.example.backend.repository.ExamRepository;
 import com.example.backend.repository.QuestionRepository;
 import com.example.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.backend.model.User;
 
@@ -34,8 +35,28 @@ public class ExamController {
         String id = "EXAM" + (examRepo.count() + 1);
         exam.setExamId(id);
         exam.setCreatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
+        if (exam.isLocked()) {
+            exam.setLocked(false);
+        }
         return examRepo.save(exam);
     }
+
+    @PutMapping("/{examId}")
+    public Exam updateExam(@PathVariable String examId, @RequestBody Exam updatedExam) {
+        return examRepo.findById(examId).map(exam -> {
+            if (updatedExam.getExamName() != null)
+                exam.setExamName(updatedExam.getExamName());
+
+            exam.setLocked(updatedExam.isLocked());
+
+            // ✅ Thêm updatedAt
+            exam.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
+
+            return examRepo.save(exam);
+        }).orElseThrow(() -> new RuntimeException("Exam not found"));
+    }
+
+
 
     @GetMapping("/{examId}/detail")
     public Map<String, Object> getExamDetail(@PathVariable String examId) {
@@ -66,6 +87,38 @@ public class ExamController {
             m.put("endTime", c.getEndTime());
             return m;
         }).toList();
+    }
+
+    @GetMapping("/summary")
+    public List<Map<String, Object>> getExamSummaries() {
+        List<Exam> exams = examRepo.findAll();
+
+        return exams.stream().map(exam -> {
+            Map<String, Object> m = new HashMap<>();
+            m.put("examId", exam.getExamId());
+            m.put("examName", exam.getExamName());
+            long count = questionRepo.countByExamId(exam.getExamId());
+            m.put("questionCount", count);
+            return m;
+        }).toList();
+    }
+
+    @DeleteMapping("/{examId}")
+    public ResponseEntity<?> deleteExam(@PathVariable String examId) {
+        if (!examRepo.existsById(examId)) {
+            return ResponseEntity.status(404).body("Không tìm thấy đề thi");
+        }
+
+        // Xóa câu hỏi liên quan trước (nếu cần)
+        questionRepo.deleteAll(questionRepo.findByExamId(examId));
+
+        // Xóa completed exam liên quan (nếu có)
+        completedRepo.deleteAll(completedRepo.findByExamId(examId));
+
+        // Sau cùng xóa đề
+        examRepo.deleteById(examId);
+
+        return ResponseEntity.ok("Đã xóa đề thi và các dữ liệu liên quan");
     }
 
 

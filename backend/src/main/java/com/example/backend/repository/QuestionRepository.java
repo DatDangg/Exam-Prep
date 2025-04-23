@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface QuestionRepository extends JpaRepository<Question, String> {
     List<Question> findByExamId(String examId);
+    long countByExamId(String examId);
 }
