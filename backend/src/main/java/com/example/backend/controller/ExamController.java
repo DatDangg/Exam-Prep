@@ -56,8 +56,6 @@ public class ExamController {
         }).orElseThrow(() -> new RuntimeException("Exam not found"));
     }
 
-
-
     @GetMapping("/{examId}/detail")
     public Map<String, Object> getExamDetail(@PathVariable String examId) {
         Exam exam = examRepo.findById(examId)
@@ -73,9 +71,19 @@ public class ExamController {
         return result;
     }
 
-    @GetMapping("/{examId}/completed")
-    public List<Map<String, Object>> getUsersCompletedExam(@PathVariable String examId) {
-        List<CompletedExam> completed = completedRepo.findByExamId(examId);
+    @GetMapping("/completed")
+    public List<Map<String, Object>> getUsersCompletedExam(
+            @RequestParam String examId,
+            @RequestParam(required = false) String userId) {
+
+        List<CompletedExam> completed;
+
+        // Nếu có userId thì lọc theo cả 2, không thì chỉ lấy theo examId
+        if (userId != null && !userId.isEmpty()) {
+            completed = completedRepo.findByExamIdAndUserId(examId, userId);
+        } else {
+            completed = completedRepo.findByExamId(examId);
+        }
 
         return completed.stream().map(c -> {
             Map<String, Object> m = new HashMap<>();

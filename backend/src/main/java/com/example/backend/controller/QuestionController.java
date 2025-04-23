@@ -3,13 +3,16 @@ package com.example.backend.controller;
 import com.example.backend.model.Question;
 import com.example.backend.repository.ExamRepository;
 import com.example.backend.repository.QuestionRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -73,11 +76,40 @@ public class QuestionController {
         }).orElseThrow(() -> new RuntimeException("Không tìm thấy câu hỏi"));
     }
 
-
-
     // Get questions by exam
     @GetMapping("/by-exam/{examId}")
     public List<Question> getQuestionsByExamId(@PathVariable String examId) {
         return questionRepo.findByExamId(examId);
     }
+
+    @GetMapping("/for-test/{examId}")
+    public List<Map<String, Object>> getQuestionsForTest(@PathVariable String examId) {
+        List<Question> questions = questionRepo.findByExamId(examId);
+
+        return questions.stream().map(q -> {
+            Map<String, Object> m = new HashMap<>();
+            m.put("questionId", q.getQuestionId());
+            m.put("question", q.getQuestionContent());
+            m.put("type", q.getType());
+
+            // Parse choicesJson thành List rồi xoá 'correct' & 'explain'
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                List<Map<String, Object>> choices = mapper.readValue(q.getChoicesJson(), List.class);
+
+                // Xoá "correct" và "explain" trước khi trả về
+                choices.forEach(choice -> {
+                    choice.remove("correct");
+                    choice.remove("explain");
+                });
+
+                m.put("choices", choices);
+            } catch (Exception e) {
+                m.put("choices", List.of());
+            }
+
+            return m;
+        }).toList();
+    }
+
 }

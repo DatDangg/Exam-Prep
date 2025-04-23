@@ -16,9 +16,9 @@ function PracticeExam() {
             .catch(err => console.log(err))
     },[])
 
-    const handleClick = (value) => {
+    const handleClick = (examId, examCount) => {
         navigate("/practice/detail", {
-            state: {examId: value}
+            state: {examId, examCount}
         })
     }
 
@@ -27,7 +27,7 @@ function PracticeExam() {
             <div className='container'>
                 <div className='row'>
                     {exams.map(exam => (
-                        <div key={exam.examId} className='col-md-3' onClick={() => handleClick(exam.examId)}> 
+                        <div key={exam.examId} className='col-md-3' onClick={() => handleClick(exam.examId, exam.questionCount)}> 
                             <div className={`${styles.wrapper}`}>
                                 <div className={styles.wrap}>
                                     <span className={styles.title}>Tên đề:</span>

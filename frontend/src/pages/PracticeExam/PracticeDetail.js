@@ -11,6 +11,7 @@ function PracticeDetail() {
     const [exam, setExam] = useState({})
     const [completed, setCompleted] = useState([])
     const examId = location.state?.examId || "";
+    const examCount = location.state?.examCount || "";
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -35,7 +36,7 @@ function PracticeDetail() {
 
     const handleClick = () => {
         navigate("/practice/test", {
-            state: {examId, examName:exam.examName}
+            state: {examId, examName:exam.examName, examCount}
         })
     }
 

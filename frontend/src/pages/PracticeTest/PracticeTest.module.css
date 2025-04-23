@@ -1,10 +1,46 @@
 .practice {
-    margin-top: 36px;
+    margin-top: 65px;
     position: relative;
 }
 
+.layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-left: 46px;
+}
+
+.practiceContent {
+    padding-top: 35px;
+    flex: 1;
+    padding-right: 32px;
+    margin-right: 250px;
+    overflow-y: auto;
+    height: calc(100vh - 65px);
+    position: relative;
+    z-index: 1;
+}
+
 .head {
-    margin-bottom: 36px;
+    
+}
+
+.practiceContent::-webkit-scrollbar {
+    width: 6px;
+}
+
+.practiceContent::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.practiceContent::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+.practiceContent::-webkit-scrollbar-thumb:hover {
+    background: #888;
 }
 
 .heading {
@@ -24,7 +60,7 @@
 
 .countDown {
     position: sticky;
-    top: 36px;
+    top: 32px;
     display: flex;
     justify-content: flex-end;
     margin-bottom: 10px;
@@ -52,9 +88,10 @@
 .wrapper {
     padding-bottom: 60px;
     position: relative;
+    scroll-margin-top: 100px;
 }
 
-.wrapper:not(:last-child)::after {  
+.wrapper:not(:last-child)::after {
     content: "";
     margin: 20px 0;
     width: 60px;
@@ -101,9 +138,7 @@
     padding: 8px 0;
 }
 
-.choices {
-    
-}
+.choices {}
 
 .choice {
     display: flex;
@@ -128,7 +163,7 @@
 .table {
     font-size: 1.6rem;
 }
-  
+
 .table th,
 .table td {
     padding: 12px 12px 12px 0;
@@ -176,9 +211,61 @@
 
 .sideBar {
     position: fixed;
-    background-color: red;
-    top: 0;
     right: 0;
+    top: 65px;
+    width: 250px;
     height: 100vh;
-    width: 120px;
+    background-color: #fff;
+    padding: 16px;
+    border-left: 1px solid #ddd;
+    z-index: 999;
 }
+
+.navGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+  }
+  
+  .navItem {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eee;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.6px solid #ccc;
+    font-size: 1.6rem;
+  }
+  
+  .navItem.answered {
+    background-color: #62ea9b; 
+    border-color: #127b3e;
+  }
+  
+  .navItem.incomplete {
+    background-color: #fdff94; 
+    border-color: #f2a935;
+  }
+  
+  .navItem.notStarted {
+    background-color: #fff; 
+    border-color: #ccc;
+  }
+  
+  .flagDot {
+    position: absolute;
+    top: 2px;
+    width: 5px;
+    height: 5px;
+    background-color: red;
+    border-radius: 50%;
+  }
+  
+  

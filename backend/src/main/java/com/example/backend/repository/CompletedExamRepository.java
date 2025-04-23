@@ -9,4 +9,5 @@ public interface CompletedExamRepository extends JpaRepository<CompletedExam, Lo
     long countByUserId(String userId);
     List<CompletedExam> findByUserId(String userId);
     List<CompletedExam> findByExamId(String examId);
+    List<CompletedExam> findByExamIdAndUserId(String examId, String userId);
 }
