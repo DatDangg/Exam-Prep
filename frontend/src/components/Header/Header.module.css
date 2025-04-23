@@ -1,7 +1,13 @@
 .header {
     padding: 12px 0;
     border-bottom: 1px solid #e3ebf6;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 65px;
+    z-index: 99999;
+    background-color: white;
 }
 
 a {

@@ -1,5 +1,6 @@
 .exam {
     padding-top: 36px;
+    margin-top: 65px;
 }
 
 .toolBar {
@@ -21,7 +22,7 @@
 
 .sort {
     padding-bottom: 4px;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: bold;
     text-align: center;
 }
