@@ -87,7 +87,7 @@ public class UserController {
 
         return completedExams.stream().map(completed -> {
             Map<String, Object> result = new HashMap<>();
-            result.put("id", completed.getId());
+            result.put("completedId", completed.getId()); // ✅ sửa lại cho rõ ràng
             result.put("userId", completed.getUserId());
             result.put("examId", completed.getExamId());
             result.put("startTime", completed.getStartTime());
@@ -102,6 +102,7 @@ public class UserController {
             return result;
         }).toList();
     }
+
 
     @PutMapping("/update/{userId}")
     public User updateUser(@PathVariable String userId, @RequestBody User updatedUser) {

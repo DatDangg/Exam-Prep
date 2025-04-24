@@ -29,6 +29,7 @@ import PracticeExam from "./pages/PracticeExam/PracticeExam";
 import PracticeLayout from "./layouts/PracticeLayout/PracticeLayout";
 import PracticeDetail from "./pages/PracticeExam/PracticeDetail";
 import PracticeTest from "./pages/PracticeTest/PracticeTest";
+import PracticeReview from "./pages/PracticeReview/PracticeReview";
 
 const RequireAdmin = ({ children }) => {
   const { user, isLoadingUser } = useAuth();
@@ -80,6 +81,7 @@ root.render(
             <Route path="/practice" element={<PracticeExam />}/>
             <Route path="/practice/detail" element={<PracticeDetail />}/>
             <Route path="/practice/test" element={<PracticeTest />}/>
+            <Route path="/practice/review" element={<PracticeReview />}/>
           </Route>
 
           <Route path="/user" element={<InforLayout />}>

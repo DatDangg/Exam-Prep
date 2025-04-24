@@ -2,22 +2,83 @@
     margin-top: 65px;
 }
 
+.title {
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin: 36px 0 18px;
+}
+
+.history {
+    font-size: 2.3rem;
+    margin-bottom: 18px;
+}
+
+.wrap {
+    max-height: 344px;
+    overflow-y: auto;
+    position: relative;
+}
+
 .table {
-    table-layout: fixed;
     width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
     text-align: center;
-}
-
-.th {
+    padding: 8px;
     font-size: 1.6rem;
-    padding-bottom: 6px;
-    border-bottom: 1px dashed #ccc;
+    box-shadow: inset 0 -1px 0 #ccc;
+    box-sizing: border-box;
 }
 
-.td {
-    font-size: 1.4rem;
+.table tbody td {
+    text-align: center;
+    padding: 8px;
+    font-size: 1.5rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 8px 0;
+    box-sizing: border-box;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, .08);
+}
+
+.table tbody td:last-child:hover {
+    cursor: pointer;
+}
+
+.wrap::-webkit-scrollbar {
+    width: 6px;
+}
+
+.wrap::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+.wrap::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+.btn {
+    margin-top: 24px;
+    font-size: 2rem;
+    padding: 6px 24px;
+    border-radius: 10px;
+    width: fit-content;
+    background-color: red;
+    border: none;
+    color: white;
+}
+
+.btn:hover {
+    background-color: rgb(196, 2, 2);
 }

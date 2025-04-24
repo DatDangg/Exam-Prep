@@ -21,9 +21,7 @@
     z-index: 1;
 }
 
-.head {
-    
-}
+.head {}
 
 .practiceContent::-webkit-scrollbar {
     width: 6px;
@@ -58,6 +56,10 @@
     margin-top: 24px;
 }
 
+.backBtn:hover {
+    background-color: #e8e8e8;
+}
+
 .countDown {
     position: sticky;
     top: 32px;
@@ -85,10 +87,17 @@
     margin-right: 5px;
 }
 
+.partTitle {
+    font-size: 2rem;
+    padding-bottom: 24px;
+    font-weight: 600;
+}
+
 .wrapper {
     padding-bottom: 60px;
     position: relative;
     scroll-margin-top: 100px;
+    padding-left: 20px;
 }
 
 .wrapper:not(:last-child)::after {
@@ -124,6 +133,11 @@
     font-size: 1.2rem;
 }
 
+.flag:hover {
+    background-color: red;
+    color: white;
+}
+
 .questionId {
     font-size: 1.4rem;
     font-weight: 600;
@@ -145,10 +159,39 @@
     align-items: center;
     font-size: 1.6rem;
     padding: 6px 0;
+    width: fit-content;
+}
+
+.choice {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    padding: 6px 0;
+}
+
+.choice input {
+    margin-right: 8px;
+}
+
+.readonly {
+    color: #8C98A4;
+}
+
+.choiceContent {
+    display: flex;
+    align-items: center;
+}
+
+.choiceContent.check {
+    background-color: #ffcbcb;
+}
+
+.choiceContent.correct {
+    background-color: #9affbc;
 }
 
 .choiceLabel {
-    margin: 0 3px 0 8px;
+    margin: 0 3px 0 0;
 }
 
 .trueFalseRow {
@@ -180,6 +223,37 @@
     margin-right: 4px;
 }
 
+.correctAnswer {
+    margin-top: 12px;
+    font-size: 1.6rem;
+    color: rgb(4, 186, 4);
+}
+
+.explainTitle {
+    font-size: 1.6rem;
+    padding: 12px 0 16px;
+    cursor: pointer;
+    color: #2c7be5;
+}
+
+.explainTitle:hover {
+    color: #0559c5;
+}
+
+.explain {
+    font-size: 1.6rem;
+    padding: 6px 0;
+}
+
+.explainWrapper {
+    display: none;
+}
+  
+.show {
+    display: block;
+  }
+  
+
 .part3 {
     overflow-x: auto;
 }
@@ -194,12 +268,22 @@
     padding: 6px 0;
 }
 
-
 .part3Text,
-.part3Input {
+.part3Input,
+.inputPart3 {
     padding: 0 4px;
     text-align: center;
     line-height: 0.54;
+}
+
+.practice input:hover {
+    cursor: pointer;
+}
+
+.inputPart3:nth-child(2) input,
+.inputPart3:nth-child(5) input {
+    cursor: default;
+    visibility: hidden;
 }
 
 .part3Text {
@@ -221,14 +305,26 @@
     z-index: 999;
 }
 
-.navGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
-    gap: 10px;
+.navFlex {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     margin-top: 12px;
-  }
-  
-  .navItem {
+}
+
+.navPartTitle {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-top: 24px;
+}
+
+.navWrapper {
+    display: flex;
+    gap: 10px
+}
+
+
+.navItem {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -242,30 +338,55 @@
     cursor: pointer;
     border: 1.6px solid #ccc;
     font-size: 1.6rem;
-  }
-  
-  .navItem.answered {
-    background-color: #62ea9b; 
+}
+
+.navItem.answered {
+    background-color: #62ea9b;
     border-color: #127b3e;
-  }
-  
-  .navItem.incomplete {
-    background-color: #fdff94; 
+}
+
+.navItem.incomplete {
+    background-color: #fdff94;
     border-color: #f2a935;
-  }
-  
-  .navItem.notStarted {
-    background-color: #fff; 
+}
+
+.navItem.notStarted {
+    background-color: #fff;
     border-color: #ccc;
-  }
-  
-  .flagDot {
+}
+
+.navItem.correct {
+    background-color: #d4edda;
+    border: 1px solid #28a745;
+}
+.navItem.wrong {
+    background-color: #f8d7da;
+    border: 1px solid #dc3545;
+}
+
+.flagDot {
     position: absolute;
     top: 2px;
     width: 5px;
     height: 5px;
     background-color: red;
     border-radius: 50%;
-  }
-  
-  
+}
+
+.submit {
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    padding: 8px 20px;
+    margin-top: 24px;
+    width: fit-content;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.submit:hover {
+    background-color: rgb(255, 49, 49);
+    color: white;
+    cursor: pointer;
+}

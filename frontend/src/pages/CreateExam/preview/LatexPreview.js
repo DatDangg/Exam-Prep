@@ -21,7 +21,7 @@ function LatexPreview({ text }) {
               className={styles.img}
             />
           );
-        return <span key={index}>{part}</span>;
+        return <span key={index} style={{ fontSize: '1.5rem' }}>{part}</span>;
       })}
     </>
   );

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useImperativeHandle, useState, forwardRef } from "react";
 import styles from '../pages/PracticeTest/PracticeTest.module.css';
 
-function CountdownTimer({ initialSeconds = 3600 }) {
+const CountdownTimer = forwardRef(({ initialSeconds = 3600, onTimeUp }, ref) => {
     const [timeLeft, setTimeLeft] = useState(() => {
         const savedEndTime = localStorage.getItem("countdownEndTime");
         if (savedEndTime) {
@@ -21,6 +21,7 @@ function CountdownTimer({ initialSeconds = 3600 }) {
             setTimeLeft(prev => {
                 if (prev <= 1) {
                     clearInterval(interval);
+                    onTimeUp?.();
                     return 0;
                 }
                 return prev - 1;
@@ -29,6 +30,10 @@ function CountdownTimer({ initialSeconds = 3600 }) {
 
         return () => clearInterval(interval);
     }, [timeLeft]);
+
+    useImperativeHandle(ref, () => ({
+        getTimeTaken: () => initialSeconds - timeLeft,
+    }));
 
     const formatTime = (seconds) => {
         const hrs = String(Math.floor(seconds / 3600)).padStart(2, "0");
@@ -46,6 +51,6 @@ function CountdownTimer({ initialSeconds = 3600 }) {
             {formatTime(timeLeft)}
         </div>
     );
-}
+})
 
 export default CountdownTimer;

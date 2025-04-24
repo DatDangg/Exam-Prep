@@ -3,17 +3,21 @@ package com.example.backend.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Data
 @Entity
+@Data
 public class UserAnswer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String userId;
-    private String examId;
+
     private String questionId;
+    private String userId;
 
     @Lob
-    private String userAnswerJson;
-}
+    @Column(columnDefinition = "TEXT")
+    private String answerJson;
 
+    private boolean isCorrect;
+
+    private Long completedExamId; // để liên kết về bài nộp
+}

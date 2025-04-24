@@ -25,6 +25,13 @@ function ExamHistory() {
             })
         }
     },[])
+
+    const handleClickReview = (completedId, examId, examName) => {
+        navigate("/practice/review", {
+            state: { completedId, examId, examName}
+        })
+    }
+    
   return (
     <div className={styles.exam}>
         <div className="container">
@@ -50,7 +57,7 @@ function ExamHistory() {
                                 <td className={styles.examBodyItem}>{exam.startTime}</td>
                                 <td className={styles.examBodyItem}>{exam.endTime}</td>
                                 <td className={styles.examBodyItem}>{exam.score}</td>
-                                <td className={styles.examBodyItem}>show</td>
+                                <td className={styles.examBodyItem} onClick={()=>handleClickReview(exam.completedId, exam.examId, exam.examName)}>show</td>
                             </tr>
                         ))}
                     </tbody>

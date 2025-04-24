@@ -11,7 +11,7 @@ function PracticeDetail() {
     const [exam, setExam] = useState({})
     const [completed, setCompleted] = useState([])
     const examId = location.state?.examId || "";
-    const examCount = location.state?.examCount || "";
+
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -20,23 +20,29 @@ function PracticeDetail() {
                 setExam(res.data)
             })
             .catch(err => console.log(err))
-    },[])
+    }, [])
 
     useEffect(() => {
-        if (!user) return; 
+        if (!user) return;
 
         axios.get(`${API}/exams/completed`, {
             params: { examId, userId: user.userId }
         })
-        .then(res => {
-            setCompleted(res.data)
-        })
-        .catch(err => console.log(err));
-    }, [user]); 
+            .then(res => {
+                setCompleted(res.data)
+            })
+            .catch(err => console.log(err));
+    }, [user]);
 
-    const handleClick = () => {
+    const handleClickTest = () => {
         navigate("/practice/test", {
-            state: {examId, examName:exam.examName, examCount}
+            state: { examId, examName: exam.examName }
+        })
+    }
+
+    const handleClickReview = (completedId) => {
+        navigate("/practice/review", {
+            state: { completedId, examId, examName: exam.examName }
         })
     }
 
@@ -47,32 +53,35 @@ function PracticeDetail() {
                     <div className={styles.title}>{exam.examName}</div>
                 </div>
                 <div className='row'>
-                    <div>Lịch sử làm bài</div>
-                    <table className={styles.table}>
-                        <thead>
-                            <tr>
-                                <th className={styles.th}>STT</th>
-                                <th className={styles.th}>Thời gian bắt đầu</th>
-                                <th className={styles.th}>Thời gian kết thúc</th>
-                                <th className={styles.th}>Điểm</th>
-                                <th className={styles.th}>Xem lại</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {completed.map((exam, idx) => (
-                                <tr key={idx}>
-                                    <td className={styles.td}>{idx+1}</td>
-                                    <td className={styles.td}>{exam.startTime}</td>
-                                    <td className={styles.td}>{exam.endTime}</td>
-                                    <td className={styles.td}>{exam.score}</td>
-                                    <td className={styles.td}>👀</td>
+                    <div className={styles.history}>Lịch sử làm bài</div>
+                    <div className={styles.wrap}>
+                        <table className={styles.table}>
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Thời gian bắt đầu</th>
+                                    <th>Thời gian kết thúc</th>
+                                    <th>Điểm</th>
+                                    <th>Xem lại</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {completed.map((exam, idx) => (
+                                    <tr key={idx}>
+                                        <td>{idx + 1}</td>
+                                        <td>{exam.startTime}</td>
+                                        <td>{exam.endTime}</td>
+                                        <td>{exam.score}</td>
+                                        <td onClick={() => handleClickReview(exam.completedId)}>👀</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
-                <div className='row'>
-                    <button onClick={handleClick}>Làm bài</button>
+                <div className='row d-flex justify-content-center'>
+                    <button onClick={handleClickTest} className={styles.btn}>Làm bài</button>
                 </div>
             </div>
         </div>

@@ -88,6 +88,7 @@ public class ExamController {
         return completed.stream().map(c -> {
             Map<String, Object> m = new HashMap<>();
             User u = userRepo.findById(c.getUserId()).orElse(null);
+            m.put("completedId", c.getId());
             m.put("username", u != null ? u.getUsername() : "Unknown");
             m.put("userId", c.getUserId());
             m.put("score", c.getScore());
