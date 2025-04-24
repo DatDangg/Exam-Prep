@@ -49,8 +49,13 @@ function PracticeReview() {
     }, [examId])
 
     const handleBack = () => {
-        navigate("/practice/detail", { state: { examId } })
+        if (window.history.length > 2) {
+            navigate(-1)
+        } else {
+            navigate("/practice/detail", { state: { examId } })
+        }
     }
+    
 
     return (
         <div className={styles.practice}>

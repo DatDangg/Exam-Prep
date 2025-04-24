@@ -1,23 +1,61 @@
 .exam {
     box-shadow: 0 1rem 1.5rem rgba(18, 38, 63, 0.1);
-    margin: 0 30px;
+    margin: 0 20px;
     padding: 20px;
     overflow-x: auto;
 }
 
-.examHeadItem {
-    padding: 16px;
-    font-size: 1.8rem;
-    text-align: center;
-    color: #95AAC9; 
+.wrap {
+    max-height: 344px;
+    overflow-y: auto;
+    position: relative;
 }
+
+
+.table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.table thead .examHeadItem {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+    text-align: center;
+    padding: 8px;
+    font-size: 1.6rem;
+    box-shadow: inset 0 -1px 0 #ccc;
+    box-sizing: border-box;
+    color: #95AAC9; 
+
+}
+
+.table tbody .examBodyItem {
+    text-align: center;
+    padding: 10px;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
 
 .examBody:nth-child(odd) {
     background-color: rgba(0, 0, 0, .08);
 }
 
-.examBodyItem {
-    padding: 16px;
-    font-size: 1.6rem;
-    text-align: center;
+.examBodyItem:last-child {
+    cursor: pointer;
+}
+
+.examHeadItem.index,
+.examBodyItem.index,
+.examHeadItem.score,
+.examBodyItem.score,
+.examHeadItem.review,
+.examBodyItem.review {
+    width: 60px; /* hoặc nhỏ hơn nếu muốn */
 }
