@@ -11,10 +11,9 @@ function ExamHistory() {
   const { user, isAuthenticated } = useAuth()
   const navigate = useNavigate()
 
-  const [sortField, setSortField] = useState(""); // 'examId' | 'examName'
+  const [sortField, setSortField] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
-
 
   useEffect(() => {
     if (!isAuthenticated) {

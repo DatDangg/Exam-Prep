@@ -75,7 +75,7 @@ function PracticeTest() {
         <div className={styles.practice}>
             <div className={styles.layout}>
                 <div className={styles.practiceContent}>
-                    <div className={styles.head}>
+                    <div>
                         <div className={styles.heading}>{examName}</div>
                         <button className={styles.backBtn} onClick={handleBack}>Quay lại</button>
                     </div>

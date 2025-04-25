@@ -81,9 +81,6 @@ function Header() {
                   <li className={`${styles.navListItem}`}>
                     <Link to="#" className={styles.Link}>Luyện để</Link>
                   </li>
-                  <li className={`${styles.navListItem}`}>
-                    <Link to="#" className={styles.Link}>Bài viết</Link>
-                  </li>
                 </ul>
                 :
                 <ul
@@ -116,16 +113,13 @@ function Header() {
               <li className={`${styles.navItem}`}>
                 <Link to="#" className={styles.Link}>Luyện đề</Link>
               </li>
-              <li className={`${styles.navItem}`}>
-                <Link to="#" className={styles.Link}>Bài viết</Link>
-              </li>
             </ul>
             :
             <ul
               className={`col order-md-0 justify-content-center ${styles.navBar}`}
             >
               <li className={`${styles.navItem}`}>
-                <Link to="#" className={styles.Link}>Thi thử</Link>
+                <Link to="/practice" className={styles.Link}>Thi thử</Link>
               </li>
               <li className={`${styles.navItem}`}>
                 <Link to="#" className={styles.Link}>Luyện đề</Link>
