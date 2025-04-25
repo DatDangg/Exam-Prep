@@ -7,5 +7,5 @@ RUN mvn clean install -DskipTests
 # 🚀 Stage 2: run jar
 FROM eclipse-temurin:17-jdk-jammy
 COPY --from=build /app/target/*.jar app.jar
-ENV JAVA_TOOL_OPTIONS="-Xmx512m"
+ENV JAVA_TOOL_OPTIONS="-Xmx256m"
 ENTRYPOINT ["java", "-jar", "/app.jar"]
