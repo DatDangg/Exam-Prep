@@ -2,9 +2,8 @@ package com.example.backend.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
-@Data
 @Entity
+@Data
 public class CompletedExam {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,17 +11,23 @@ public class CompletedExam {
 
     @Lob
     @Column(columnDefinition = "TEXT")
-    private String summaryJson; // optional: chứa tổng hợp chi tiết (nếu muốn lưu gộp)
-
+    private String summaryJson;
 
     private String userId;
     private String examId;
 
-    private String startTime;   // sửa từ String → long
-    private String endTime;     // sửa từ String → long
+    private String startTime;
+    private String endTime;
 
-    private int correct;      // ✅ thêm
-    private int total;        // ✅ thêm
+    private int correct;
+    private int total;
+    private double score;
 
-    private double score;        // sửa từ Double → int nếu bạn muốn dùng điểm nguyên
+    @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName = "userId", insertable = false, updatable = false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "examId", referencedColumnName = "examId", insertable = false, updatable = false)
+    private Exam exam;
 }

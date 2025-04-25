@@ -3,9 +3,8 @@ package com.example.backend.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
-
-@Data
 @Entity
+@Data
 public class Exam {
     @Id
     private String examId;

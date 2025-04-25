@@ -7,9 +7,8 @@ import jakarta.persistence.Lob;
 import lombok.Data;
 
 import java.util.List;
-
-@Data
 @Entity
+@Data
 public class Question {
     @Id
     private String questionId;
@@ -28,14 +27,17 @@ public class Question {
 
     private String answer;
 
-    // Setter custom cho choices
+    @ManyToOne
+    @JoinColumn(name = "examId", referencedColumnName = "examId", insertable = false, updatable = false)
+    private Exam exam;
+
     @JsonProperty("choices")
     public void setChoices(List<Object> choices) {
         try {
             this.choicesJson = new com.fasterxml.jackson.databind.ObjectMapper()
                     .writeValueAsString(choices);
         } catch (Exception e) {
-            this.choicesJson = "[]"; // fallback
+            this.choicesJson = "[]";
         }
     }
 
@@ -48,8 +50,4 @@ public class Question {
             return List.of();
         }
     }
-
-
-
-    // Getters/setters cho các field còn lại (hoặc dùng Lombok)
 }

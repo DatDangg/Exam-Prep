@@ -19,5 +19,13 @@ public class UserAnswer {
 
     private boolean isCorrect;
 
-    private Long completedExamId; // để liên kết về bài nộp
+    private Long completedExamId;
+
+    @ManyToOne
+    @JoinColumn(name = "completedExamId", referencedColumnName = "id", insertable = false, updatable = false)
+    private CompletedExam completedExam;
+
+    @ManyToOne
+    @JoinColumn(name = "questionId", referencedColumnName = "questionId", insertable = false, updatable = false)
+    private Question question;
 }
