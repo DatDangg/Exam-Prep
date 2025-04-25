@@ -3,12 +3,13 @@ services:
     name: exam-prep
     runtime: docker
     envVars:
-      - key: DATABASE_URL
-        value: jdbc:postgresql://postgres:elKDnCrlJCfmcyTbhsRlswkvMsCLizEk@exam-prep-mysql.railway.internal:5432/railway
-      - key: DB_USERNAME
-        value: postgres
-      - key: DB_PASSWORD
-        value: elKDnCrlJCfmcyTbhsRlswkvMsCLizEk
+  - key: DATABASE_URL
+    value: jdbc:postgresql://exam-prep-mysql.railway.internal:5432/railway
+  - key: DB_USERNAME
+    value: postgres
+  - key: DB_PASSWORD
+    value: elKDnCrlJCfmcyTbhsRlswkvMsCLizEk
+
     dockerfilePath: ./backend/Dockerfile
     autoDeploy: true
     rootDir: backend
