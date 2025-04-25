@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
-import { ReactComponent as EditIcon } from '../../assets/img/edit-test.svg';
+import { ReactComponent as EditIcon } from '../../../assets/img/edit-test.svg';
 
 
 function ExamDetails() {

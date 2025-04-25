@@ -1,5 +1,5 @@
 import React from "react";
-import Latex from "../Latex/Latex";
+import Latex from "../../../../utils/Latex";
 
 import styles from './LatexPreview.module.css'
 

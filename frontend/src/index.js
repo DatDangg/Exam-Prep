@@ -16,20 +16,20 @@ import InforLayout from "./layouts/InforLayout/InforLayout";
 import Home from "./pages/Home/Home";
 import { AuthProvider } from "./contexts/AuthContext";
 import Infor from "./pages/Infor/Infor";
-import ExamHistory from "./pages/ExamHistory/ExamHistory";
-import Exam from "./pages/Exam/Exam";
-import CreateExam from "./pages/CreateExam/CreateExam";
+import ExamHistory from "./pages/ExamPage/ExamHistory/ExamHistory"
+import Exam from "./pages/ExamPage/Exam/Exam";
+import CreateExam from "./pages/ExamPage/CreateExam/CreateExam";
 import ExamLayout from "./layouts/ExamLayout/ExamLayout";
-import NewExam from "./pages/Exam/NewExam";
-import ExamDetails from "./pages/ExamDetails/ExamDetails";
+import NewExam from "./pages/ExamPage/Exam/NewExam";
+import ExamDetails from "./pages/ExamPage/ExamDetails/ExamDetails";
 import { useAuth } from "./hooks/useAuth"; 
 import { Navigate } from "react-router-dom";
-import ManageQuestion from "./pages/ExamDetails/ManageQuestion";
-import PracticeExam from "./pages/PracticeExam/PracticeExam";
+import ManageQuestion from "./pages/ExamPage/ManageQuestion/ManageQuestion";
+import PracticeExam from "./pages/PracticePage/PracticeExam/PracticeExam";
 import PracticeLayout from "./layouts/PracticeLayout/PracticeLayout";
-import PracticeDetail from "./pages/PracticeExam/PracticeDetail";
-import PracticeTest from "./pages/PracticeTest/PracticeTest";
-import PracticeReview from "./pages/PracticeReview/PracticeReview";
+import PracticeDetail from "./pages/PracticePage/PracticeDetail/PracticeDetail";
+import PracticeTest from "./pages/PracticePage/PracticeTest/PracticeTest";
+import PracticeReview from "./pages/PracticePage/PracticeReview/PracticeReview";
 
 const RequireAdmin = ({ children }) => {
   const { user, isLoadingUser } = useAuth();

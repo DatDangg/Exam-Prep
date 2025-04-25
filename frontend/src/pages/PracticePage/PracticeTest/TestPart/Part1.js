@@ -1,6 +1,6 @@
 import React from "react";
-import LatexPreview from "../CreateExam/preview/LatexPreview";
-import styles from "./PracticeTest.module.css";
+import LatexPreview from "../../../ExamPage/CreateExam/preview/LatexPreview";
+import styles from "../PracticeTest.module.css";
 
 function Part1({ question, answer, setAnswers, readonly }) {
   const correctAnswer = question.choices.find(choice => choice.correct)?.label;

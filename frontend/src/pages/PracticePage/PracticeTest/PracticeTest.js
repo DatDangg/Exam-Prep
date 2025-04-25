@@ -1,14 +1,14 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../hooks/useAuth'
+import { useAuth } from '../../../hooks/useAuth'
 import { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
-import CountdownTimer from '../../utils/CountdownTimer'
-import Part3 from './Part3'
-import Part1 from './Part1'
-import Part2 from './Part2'
-import renderNav from '../../utils/renderNav'
+import CountdownTimer from '../../../utils/CountdownTimer'
+import Part3 from './TestPart/Part3'
+import Part1 from './TestPart/Part1'
+import Part2 from './TestPart/Part2'
+import renderNav from '../../../utils/renderNav'
 import styles from './PracticeTest.module.css'
-import RenderQuestions from '../../utils/renderQuestions'
+import RenderQuestions from '../../../utils/renderQuestions'
 
 function PracticeTest() {
     const API = process.env.REACT_APP_API_URL

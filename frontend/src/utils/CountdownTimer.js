@@ -1,5 +1,5 @@
 import React, { useEffect, useImperativeHandle, useState, forwardRef } from "react";
-import styles from '../pages/PracticeTest/PracticeTest.module.css';
+import styles from '../pages/PracticePage/PracticeTest/PracticeTest.module.css';
 
 const CountdownTimer = forwardRef(({ initialSeconds = 3600, onTimeUp }, ref) => {
     const [timeLeft, setTimeLeft] = useState(() => {

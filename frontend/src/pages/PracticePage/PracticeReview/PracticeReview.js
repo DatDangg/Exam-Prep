@@ -2,11 +2,11 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import styles from '../PracticeTest/PracticeTest.module.css'
 import { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
-import renderNav from '../../utils/renderNav'
-import Part1 from '../PracticeTest/Part1'
-import Part2 from '../PracticeTest/Part2'
-import Part3 from '../PracticeTest/Part3'
-import RenderQuestions from '../../utils/renderQuestions'
+import renderNav from '../../../utils/renderNav'
+import Part1 from '../PracticeTest/TestPart/Part1'
+import Part2 from '../PracticeTest/TestPart/Part2'
+import Part3 from '../PracticeTest/TestPart/Part3'
+import RenderQuestions from '../../../utils/renderQuestions'
 
 function PracticeReview() {
     const API = process.env.REACT_APP_API_URL

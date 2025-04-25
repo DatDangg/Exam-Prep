@@ -8,7 +8,7 @@ import QuestionStep from "./steps/QuestionStep";
 import PreviewQuestion from "./preview/PreviewQuestion";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-import { validateQuestionInput } from "../../utils/validateQuestion";
+import { validateQuestionInput } from "../../../utils/validateQuestion";
 
 function CreateExam() {
   const API = process.env.REACT_APP_API_URL;

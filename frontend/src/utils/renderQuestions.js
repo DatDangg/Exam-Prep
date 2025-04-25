@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import LatexPreview from '../pages/CreateExam/preview/LatexPreview'
-import styles from '../pages/PracticeTest/PracticeTest.module.css'
+
+import styles from '../pages/PracticePage/PracticeTest/PracticeTest.module.css';
+import LatexPreview from '../pages/ExamPage/CreateExam/preview/LatexPreview';
 
 const RenderQuestions = ({
     questions,

@@ -1,5 +1,4 @@
-import styles from '../pages/PracticeTest/PracticeTest.module.css'
-import styles_ from '../pages/PracticeReview/PracticeReview.module.css'
+import styles from '../pages/PracticePage/PracticeTest/PracticeTest.module.css';
 
 const renderNav = (
     questions,

@@ -1,8 +1,20 @@
 .exam {
     box-shadow: 0 1rem 1.5rem rgba(18, 38, 63, 0.1);
-    margin: 0 20px;
-    padding: 20px;
     overflow-x: auto;
+}
+
+.input {
+    font-size: 1.6rem;
+    padding: 4px 12px;
+    margin-bottom: 24px;
+    width: 100%;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 7px;
+}
+
+.input:focus {
+    border: 1px solid #181818;
 }
 
 .wrap {
@@ -10,7 +22,6 @@
     overflow-y: auto;
     position: relative;
 }
-
 
 .table {
     width: 100%;
@@ -51,11 +62,42 @@
     cursor: pointer;
 }
 
+.table tbody .examBodyItem:nth-child(3) {
+    text-align: left;
+}
+
+.table thead .examHeadItem:nth-child(2),
+.table thead .examHeadItem:nth-child(3) {
+    cursor: pointer;
+}
+
 .examHeadItem.index,
-.examBodyItem.index,
+.examBodyItem.index {
+    width: 40px;
+}
+
+.examBodyItem.idTest,
+.examHeadItem.idTest {
+    width: 120px;
+}
+
 .examHeadItem.score,
 .examBodyItem.score,
 .examHeadItem.review,
 .examBodyItem.review {
-    width: 60px; /* hoặc nhỏ hơn nếu muốn */
+    width: 80px;
+}
+
+
+.wrap::-webkit-scrollbar {
+    width: 6px;
+}
+
+.wrap::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+.wrap::-webkit-scrollbar-thumb:hover {
+    background: #888;
 }

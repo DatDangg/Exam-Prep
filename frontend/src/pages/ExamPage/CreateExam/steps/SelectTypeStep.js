@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "../CreateExam.module.css";
-import multiple from "../../../assets/img/multiple.webp";
-import boolean from "../../../assets/img/boolean.webp";
-import text from "../../../assets/img/text.svg";
+import multiple from "../../../../assets/img/multiple.webp";
+import boolean from "../../../../assets/img/boolean.webp";
+import text from "../../../../assets/img/text.svg";
 
 function SelectTypeStep({ questionType, onChange }) {
   return (
