@@ -108,9 +108,13 @@ public class ExamController {
             m.put("examName", exam.getExamName());
             long count = questionRepo.countByExamId(exam.getExamId());
             m.put("questionCount", count);
+            m.put("attemptCount", exam.getAttemptCount()); // 👈 đã có
+            m.put("locked", exam.isLocked()); // 👈 thêm cái này
             return m;
         }).toList();
     }
+
+
 
     @DeleteMapping("/{examId}")
     public ResponseEntity<?> deleteExam(@PathVariable String examId) {

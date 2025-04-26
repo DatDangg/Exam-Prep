@@ -1,29 +1,136 @@
 .practice {
-    margin-top: 65px;
+    margin-top: 95px;
+}
+
+.noti {
+    font-size: 1.6rem;
+    text-align: center;
+    margin: 0 24px 24px 24px;
+    padding: 12px 24px;
+    background-color: #f6c343;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.noti a {
+    color: black;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+}
+
+.accountType {
+    font-size: 1.6rem;
+    text-align: center;
+    margin: 0 24px 24px 24px;
+    padding: 12px 24px;
+    background-color: #e9f0fb;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+}
+
+.accountType span {
+    font-weight: 600;
+}
+
+.wrapp {
+    margin: 0 24px;
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 1rem 1.5rem rgba(18, 38, 63, 0.1);
+}
+
+.locked {
+    height: 100%;
+    margin: 0 6px;
+    position: relative;
+    cursor: pointer;
+}
+
+.lock {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 30px;
+    height: 30px;
+}
+
+.locked .wrapper {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.unlocked {
+    height: 100%;
+    margin: 0 6px;
 }
 
 .wrapper {
-    border: 1px solid #9931df;
-    margin: 6px 0;
-    padding: 12px;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-shadow: 1px 1px 2px #ccc;
+    margin: 12px 0;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform .2s linear, box-shadow .3s linear;
 }
 
-.wrap {
-    display: flex;
-    align-items: flex-end;
-    white-space: nowrap;
+.wrapper:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .2), 
+                0 2px 6px 2px rgba(60, 64, 67, .15);
 }
 
 .title {
-    margin-right: 5px;
-    width: 72px;
+    font-weight: 600;
     font-size: 1.6rem;
-    flex-shrink: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    padding-bottom: 5px;
 }
 
-.desc {
-    font-size: 1.6rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.infor {
+    font-size: 1.5rem;
+    color: #7e7e7e;
+    font-weight: 600;
+}    
+
+.infor svg:nth-child(3) {
+    margin-left: 3px;
+}
+
+.infor span {
+    margin-left: 3px;
+}
+
+.infor svg {
+    color: #7e7e7e;
+    width: 20px;
+    height: 20px;
+}
+
+
+.button {
+    padding: 6px 12px;
+    border-radius: 5px;
+    margin-top: 24px;
+    font-size: 1.4rem;
+    background-color: transparent;
+    border: 1px solid #2c7be5;
+    font-weight: 600;
+    color: #2c7be5;
+}
+
+.button:hover {
+    background-color: #2c7be5;
+    color: white
 }

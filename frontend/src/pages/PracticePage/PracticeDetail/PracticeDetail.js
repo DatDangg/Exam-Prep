@@ -42,14 +42,19 @@ function PracticeDetail() {
 
     const handleClickReview = (completedId) => {
         navigate("/practice/review", {
-            state: { completedId, examId, examName: exam.examName }
+            state: { completedId, examId, examName: exam.examName, from: location.pathname }
         })
+    }
+
+    const handleBack = () => {
+        navigate("/practice/")
     }
 
     return (
         <div className={styles.practice}>
             <div className='container'>
                 <div className='row'>
+                    <button className={styles.button} onClick={handleBack}>Quay lại</button>
                     <div className={styles.title}>{exam.examName}</div>
                 </div>
                 <div className='row'>

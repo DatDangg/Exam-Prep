@@ -10,6 +10,7 @@ public class UserAnswer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String examId;     // 👈 để không bị NULL
     private String questionId;
     private String userId;
 

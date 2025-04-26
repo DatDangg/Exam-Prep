@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
 import { useEffect, useRef } from "react";
 import { useAuth } from "../../hooks/useAuth";
@@ -9,6 +9,7 @@ function Header() {
   const avtRef = useRef();
   const btnRef = useRef();
   const toggleRef = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClick = () => {
@@ -185,6 +186,7 @@ function Header() {
                     className={styles.dropdownItem}
                     onClick={() => {
                       logout();
+                      navigate("/login")
                     }}
                   >
                     Đăng xuất

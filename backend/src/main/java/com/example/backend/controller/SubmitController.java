@@ -2,9 +2,11 @@ package com.example.backend.controller;
 
 import com.example.backend.dto.GradeRequestDTO;
 import com.example.backend.model.CompletedExam;
+import com.example.backend.model.Exam;
 import com.example.backend.model.Question;
 import com.example.backend.model.UserAnswer;
 import com.example.backend.repository.CompletedExamRepository;
+import com.example.backend.repository.ExamRepository;
 import com.example.backend.repository.QuestionRepository;
 import com.example.backend.repository.UserAnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,8 @@ import java.util.List;
 public class SubmitController {
     @Autowired
     private CompletedExamRepository completedRepo;
-
+    @Autowired
+    private ExamRepository examRepo; // nhớ Autowired repo
     @Autowired
     private UserAnswerRepository answerRepo;
     @Autowired
@@ -143,6 +146,7 @@ public class SubmitController {
                 userAnswerEntity.setUserId(userId);
                 userAnswerEntity.setCorrect(isCorrect);
                 userAnswerEntity.setCompletedExamId(completed.getId());
+                userAnswerEntity.setExamId(examId);  // 👈 dòng này còn thiếu
                 userAnswerEntity.setAnswerJson(mapper.writeValueAsString(userAns));
                 savedAnswers.add(userAnswerEntity);
 
@@ -158,6 +162,12 @@ public class SubmitController {
         completed.setCorrect(correct);
         completed.setTotal(total);
         completedRepo.save(completed);
+
+        Exam exam = examRepo.findById(examId).orElse(null);
+        if (exam != null) {
+            exam.setAttemptCount(exam.getAttemptCount() + 1);
+            examRepo.save(exam);
+        }
 
         Map<String, Object> result = new HashMap<>();
         result.put("correct", correct);

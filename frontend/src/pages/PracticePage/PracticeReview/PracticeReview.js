@@ -11,6 +11,7 @@ import RenderQuestions from '../../../utils/renderQuestions'
 function PracticeReview() {
     const API = process.env.REACT_APP_API_URL
     const location = useLocation()
+    const from = location.state?.from || "/";
     const examId = location?.state.examId || ""
     const examName = location?.state.examName || ""
     const completedId = location?.state.completedId || ""
@@ -18,7 +19,6 @@ function PracticeReview() {
     const questionRefs = useRef({})
     const [questions, setQuestions] = useState([])
     const [answers, setAnswers] = useState({})
-    console.log(answers)
     const part1Questions = questions.filter(q => q.type === "Part_1")
     const part2Questions = questions.filter(q => q.type === "Part_2")
     const part3Questions = questions.filter(q => q.type === "Part_3")
@@ -49,13 +49,8 @@ function PracticeReview() {
     }, [examId])
 
     const handleBack = () => {
-        if (window.history.length > 2) {
-            navigate(-1)
-        } else {
-            navigate("/practice/detail", { state: { examId } })
-        }
+        navigate(from, { replace: true, state: { examId } });
     }
-    
 
     return (
         <div className={styles.practice}>

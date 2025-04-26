@@ -9,10 +9,6 @@ public class CompletedExam {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Lob
-    @Column(columnDefinition = "TEXT")
-    private String summaryJson;
-
     private String userId;
     private String examId;
 
