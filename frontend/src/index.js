@@ -30,6 +30,8 @@ import PracticeLayout from "./layouts/PracticeLayout/PracticeLayout";
 import PracticeDetail from "./pages/PracticePage/PracticeDetail/PracticeDetail";
 import PracticeTest from "./pages/PracticePage/PracticeTest/PracticeTest";
 import PracticeReview from "./pages/PracticePage/PracticeReview/PracticeReview";
+import PaymentLayout from "./layouts/PaymentLayout/PaymentLayout";
+import Payment from "./pages/Payment/Payment";
 
 const RequireAdmin = ({ children }) => {
   const { user, isLoadingUser } = useAuth();
@@ -88,10 +90,13 @@ root.render(
             <Route path="infor" element={<Infor />} />
             <Route path="history" element={<ExamHistory />} />
           </Route>
+
+          {/* <Route element={<PaymentLayout />}>
+            <Route path="/payment" element={<Payment />}/>
+          </Route> */}
         </Routes>
       </BrowserRouter>
     </AuthProvider>
-    
   </React.StrictMode>
 );
 

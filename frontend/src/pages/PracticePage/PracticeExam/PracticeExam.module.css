@@ -12,11 +12,24 @@
     font-weight: 600;
 }
 
-.noti a {
+/* .noti a {
     color: black;
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
+} */
+
+
+.upgradeText {
+    color: black;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
 }
+
+.upgradeText:hover {
+    color: #1a5fd0;
+}
+
 
 .accountType {
     font-size: 1.6rem;
@@ -117,7 +130,6 @@
     width: 20px;
     height: 20px;
 }
-
 
 .button {
     padding: 6px 12px;

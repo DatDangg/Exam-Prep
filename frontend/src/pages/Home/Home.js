@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
+import { useAuth } from "../../hooks/useAuth";
 
 function Home() {
+  const { isAuthenticated } = useAuth()
   return (
     <div className={styles.home}>
       <div className={styles.homeBanner}>
@@ -213,7 +215,7 @@ function Home() {
                   Đăng ký thi dễ dàng với quy trình thi như sau:
                 </div>
                   <ol className={styles.descList}>
-                    <li><Link to='/register'>Đăng ký</Link> tài khoản trực tuyến</li>
+                    <li>{isAuthenticated ? 'Đăng ký' : <Link to='/register'>Đăng ký</Link>} tài khoản trực tuyến</li>
                     <li>Hệ thống tự động cấp tài khoản thi trực tuyến ngay sau khi đăng ký, đồng thời gửi thông tin qua email</li>
                     <li>Đăng nhập hệ thống</li>
                     <li>Nhận đề, vào thi</li>
