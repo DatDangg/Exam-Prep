@@ -1,12 +1,12 @@
-# Build stage
-FROM maven:3.8.6-openjdk-17-slim AS build
+# Build stage: build project bằng Maven
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
-COPY back/pom.xml .
-COPY back/src ./src
+COPY pom.xml .
+COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Package stage
-FROM openjdk:17-jdk-slim
+# Package stage: chạy app bằng JDK nhẹ
+FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
