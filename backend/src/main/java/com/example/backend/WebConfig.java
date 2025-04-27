@@ -15,7 +15,7 @@ public class WebConfig {
                         .allowedOrigins(
                             "http://localhost:3000",                              // local React dev
                             "https://exam-prep-frontend.onrender.com",            // frontend production
-                            "https://exam-prep-6xlx6p4wq-datttts-projects.vercel.app"
+                            "https://exam-prep-xi.vercel.app/"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
