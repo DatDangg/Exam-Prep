@@ -35,6 +35,9 @@ public class ExamController {
         String id = "EXAM" + (examRepo.count() + 1);
         exam.setExamId(id);
         exam.setCreatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
+        if (exam.isLocked()) {
+            exam.setLocked(false);
+        }
         return examRepo.save(exam);
     }
 
