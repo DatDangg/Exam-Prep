@@ -29,7 +29,7 @@ const renderNav = (
                         const valid = answer && options.every(opt => typeof answer[opt] === 'boolean')
                         status = valid ? "answered" : "incomplete"
                     } else if (q.type === "Part_3") {
-                        const valid = answer && Object.keys(answer).length === 4 &&
+                        const valid = answer && Object.keys(answer).length > 0 &&
                             Object.values(answer).every(val => val !== "")
                         status = valid ? "answered" : "incomplete"
                     }
