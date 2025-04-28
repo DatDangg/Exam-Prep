@@ -37,7 +37,7 @@ function UpgradePopup({
           <>
             <h2 className={styles.popupTitle}>💳 Thanh toán</h2>
             <div className={styles.qrSection}>
-              <img src="/QR.jpeg" alt="QR thanh toán" className={styles.qrImage} />
+              <img src="/QR.jpg" alt="QR thanh toán" className={styles.qrImage} />
               <p>Quét QR để thanh toán 50.000đ</p>
             </div>
             <div className={styles.buttonGroup}>
