@@ -283,7 +283,7 @@
     background-color: #fff;
     padding: 16px;
     border-left: 1px solid #ddd;
-    z-index: 999;
+    z-index: 50;
 }
 
 .navFlex {
