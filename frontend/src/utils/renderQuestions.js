@@ -65,7 +65,7 @@ const RenderQuestions = ({
                                     className={styles.explainTitle}
                                     onClick={() => toggleExplain(q.questionId)}
                                 >
-                                    Giải thích chi tiết đáp án <i className="fa fa-caret-down"></i>
+                                    Giải thích chi tiết đáp án <i className="fas fa-caret-down"></i>
                                 </div>
 
                                 <div

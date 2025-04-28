@@ -22,7 +22,7 @@ import CreateExam from "./pages/ExamPage/CreateExam/CreateExam";
 import ExamLayout from "./layouts/ExamLayout/ExamLayout";
 import NewExam from "./pages/ExamPage/Exam/NewExam";
 import ExamDetails from "./pages/ExamPage/ExamDetails/ExamDetails";
-import { useAuth } from "./hooks/useAuth"; 
+import { useAuth } from "./hooks/useAuth";
 import { Navigate } from "react-router-dom";
 import ManageQuestion from "./pages/ExamPage/ManageQuestion/ManageQuestion";
 import PracticeExam from "./pages/PracticePage/PracticeExam/PracticeExam";
@@ -32,6 +32,19 @@ import PracticeTest from "./pages/PracticePage/PracticeTest/PracticeTest";
 import PracticeReview from "./pages/PracticePage/PracticeReview/PracticeReview";
 import PaymentLayout from "./layouts/PaymentLayout/PaymentLayout";
 import Payment from "./pages/Payment/Payment";
+
+const RequireAuth = ({ children }) => {
+  const { user, isLoadingUser } = useAuth();
+
+  if (isLoadingUser) {
+    return <div>Đang tải dữ liệu người dùng...</div>;
+  }
+
+  if (!user) return <Navigate to="/login" replace />;
+
+  return children;
+};
+
 
 const RequireAdmin = ({ children }) => {
   const { user, isLoadingUser } = useAuth();
@@ -63,38 +76,41 @@ root.render(
           }}
         />
         <Routes>
+          {/* Các trang Public */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
-          <Route element={<RequireAdmin> <ExamLayout /> </RequireAdmin>}>
-            <Route path="/exam" element={<Exam />} />
-            <Route path="/exam/new_exam" element={<NewExam />} />
-            <Route path="/exam/details" element={<ExamDetails />} />
-          </Route>
-          
-          <Route path="/exam/details/manage_ques" element={<RequireAdmin><ManageQuestion /></RequireAdmin>} />
-          <Route path="/exam/create" element={<RequireAdmin><CreateExam /></RequireAdmin>}/>
-
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
           </Route>
 
-          <Route element={<PracticeLayout />}>
-            <Route path="/practice" element={<PracticeExam />}/>
-            <Route path="/practice/detail" element={<PracticeDetail />}/>
-            <Route path="/practice/test" element={<PracticeTest />}/>
-            <Route path="/practice/review" element={<PracticeReview />}/>
+          {/* Các trang yêu cầu ĐĂNG NHẬP */}
+          <Route element={<RequireAuth> <ExamLayout /> </RequireAuth>}>
+            <Route path="/exam" element={<Exam />} />
+            <Route path="/exam/new_exam" element={<NewExam />} />
+            <Route path="/exam/details" element={<ExamDetails />} />
           </Route>
 
-          <Route path="/user" element={<InforLayout />}>
+          <Route path="/exam/details/manage_ques" element={<RequireAuth><RequireAdmin><ManageQuestion /></RequireAdmin></RequireAuth>} />
+          <Route path="/exam/create" element={<RequireAuth><RequireAdmin><CreateExam /></RequireAdmin></RequireAuth>} />
+
+          <Route element={<RequireAuth><PracticeLayout /></RequireAuth>}>
+            <Route path="/practice" element={<PracticeExam />} />
+            <Route path="/practice/detail" element={<PracticeDetail />} />
+            <Route path="/practice/test" element={<PracticeTest />} />
+            <Route path="/practice/review" element={<PracticeReview />} />
+          </Route>
+
+          <Route path="/user" element={<RequireAuth><InforLayout /></RequireAuth>}>
             <Route path="infor" element={<Infor />} />
             <Route path="history" element={<ExamHistory />} />
           </Route>
 
-          {/* <Route element={<PaymentLayout />}>
-            <Route path="/payment" element={<Payment />}/>
-          </Route> */}
+          {/* Nếu mở Payment thì cũng bọc luôn */}
+          {/* <Route element={<RequireAuth><PaymentLayout /></RequireAuth>}>
+    <Route path="/payment" element={<Payment />} />
+  </Route> */}
         </Routes>
+
       </BrowserRouter>
     </AuthProvider>
   </React.StrictMode>

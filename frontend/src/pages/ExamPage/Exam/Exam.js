@@ -11,6 +11,7 @@ function Exam() {
     const [sortField, setSortField] = useState('');
     const [sortOrder, setSortOrder] = useState('asc');
     const navigate = useNavigate();
+    
     useEffect(() => {
         axios.get(`${API}/exams`)
             .then(res => {

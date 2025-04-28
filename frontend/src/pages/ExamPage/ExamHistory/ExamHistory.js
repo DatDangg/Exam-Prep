@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 function ExamHistory() {
   const API = process.env.REACT_APP_API_URL;
   const [exams, setExams] = useState([])
-  const { user, isAuthenticated } = useAuth()
+  const { user } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   const [sortField, setSortField] = useState("");
@@ -16,18 +16,13 @@ function ExamHistory() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/login");
-    }
-    else {
-      axios.get(`${API}/users/completed/${user.userId}`)
-        .then(res => {
-          setExams(res.data)
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    }
+    axios.get(`${API}/users/completed/${user.userId}`)
+      .then(res => {
+        setExams(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }, [])
 
   const handleClickReview = (completedId, examId, examName) => {

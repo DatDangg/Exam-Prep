@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 
 function Infor() {
     const API = process.env.REACT_APP_API_URL;
-    const { user, isAuthenticated } = useAuth()
+    const { user } = useAuth()
     const [infor, setInfor] = useState({})
     const navigate = useNavigate()
     const [formState, setFormState] = useState({
@@ -20,23 +20,19 @@ function Infor() {
     const [completedExamCount, setCompletedExamCount] = useState()
 
     useEffect(() => {
-        if (!isAuthenticated) {
-            navigate("/login");
-        }
-        else {
-            axios.get(`${API}/users/infor/${user.userId}`)
-                .then(res => {
-                    const userInfor = res.data.user
-                    setInfor(userInfor)
-                    setFormState({
-                        username: userInfor.username,
-                        email: userInfor.email,
-                        phoneNumber: userInfor.phoneNumber
-                    });
-                    setCompletedExamCount(res.data.completedExamCount)
-                })
-                .catch(err => console.error(err));
-        }
+        axios.get(`${API}/users/infor/${user.userId}`)
+            .then(res => {
+                const userInfor = res.data.user
+                setInfor(userInfor)
+                setFormState({
+                    username: userInfor.username,
+                    email: userInfor.email,
+                    phoneNumber: userInfor.phoneNumber
+                });
+                setCompletedExamCount(res.data.completedExamCount)
+            })
+            .catch(err => console.error(err));
+    
     }, [])
 
     const handleChange = (key, value) => {
