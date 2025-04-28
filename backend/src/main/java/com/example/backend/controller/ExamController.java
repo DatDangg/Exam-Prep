@@ -66,10 +66,11 @@ public class ExamController {
         Map<String, Object> result = new HashMap<>();
         result.put("examName", exam.getExamName());
         result.put("questionCount", questions.size());
+        result.put("locked", exam.isLocked()); // 👈 thêm dòng này
         result.put("questions", questions);
-
         return result;
     }
+
 
     @GetMapping("/completed")
     public List<Map<String, Object>> getUsersCompletedExam(
