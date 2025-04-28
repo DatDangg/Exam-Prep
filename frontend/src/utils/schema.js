@@ -17,22 +17,6 @@ export const loginSchema = yup.object().shape({
   password: yup
     .string()
     .required("Mật khẩu không được để trống")
-    .test("is-valid-pass", function (value) {
-      const input = String(value || "").trim();
-      const errors = []
-      if (input.length < 6) errors.push("phải có ít nhất 6 kí tự")
-      if (!/[A-Z]/.test(input)) errors.push("phải có chữ in hoa");
-      if (!/[a-z]/.test(input)) errors.push("phải có chữ thường");
-      if (!/[0-9]/.test(input)) errors.push("phải có chữ số");
-      if (!/[\W_]/.test(input)) errors.push("phải có ký tự đặc biệt");
-
-      if (errors.length) {
-        return this.createError({
-          message: `Mật khẩu ${errors.join(', ')}`
-        })
-      }
-      return true
-    })
 });
 
 
