@@ -22,7 +22,6 @@ function ExamDetails() {
         axios.get(`${API}/exams/${examId}/detail`)
             .then(res => {
                 setExam(res.data)
-                console.log(res.data)
             })
             .catch(err => console.log(err))
     }, [])
